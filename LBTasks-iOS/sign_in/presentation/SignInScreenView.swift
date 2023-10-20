@@ -33,7 +33,11 @@ struct SignInScreenView: View {
 
             
             Button("Sign In with Email") {
-                viewModel.signInWithEmailAndPassword(email: email, password: password, repeatedPassword: repeatedPassword)
+                viewModel.signInWithEmailAndPassword(
+                    email: email,
+                    password: password,
+                    repeatedPassword: repeatedPassword
+                )
             }
             
             Button("Login with Email") {
