@@ -31,6 +31,16 @@
 		8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */; };
 		8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */; };
 		8641D4F72AE214DF00F89E89 /* SignInDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */; };
+		8641D4FA2AE2169000F89E89 /* RealtimeDatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4F92AE2169000F89E89 /* RealtimeDatabaseClient.swift */; };
+		8641D4FC2AE216DE00F89E89 /* TaskRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4FB2AE216DE00F89E89 /* TaskRepositoryImpl.swift */; };
+		8641D4FE2AE216EF00F89E89 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4FD2AE216EF00F89E89 /* TaskRepository.swift */; };
+		8641D5002AE216F800F89E89 /* TaskData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4FF2AE216F800F89E89 /* TaskData.swift */; };
+		8641D5022AE2170700F89E89 /* TaskType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5012AE2170700F89E89 /* TaskType.swift */; };
+		8641D5042AE2171B00F89E89 /* DeleteTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5032AE2171B00F89E89 /* DeleteTaskUseCase.swift */; };
+		8641D5062AE2172A00F89E89 /* GetTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5052AE2172A00F89E89 /* GetTaskUseCase.swift */; };
+		8641D5082AE2173700F89E89 /* InsertTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5072AE2173700F89E89 /* InsertTaskUseCase.swift */; };
+		8641D50A2AE2174D00F89E89 /* TaskUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5092AE2174D00F89E89 /* TaskUseCases.swift */; };
+		8641D50C2AE2176400F89E89 /* UpdateTaskUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D50B2AE2176400F89E89 /* UpdateTaskUseCase.swift */; };
 		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
 		867175242ADC826100A769C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175232ADC826100A769C7 /* Preview Assets.xcassets */; };
@@ -74,6 +84,16 @@
 		8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 		8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDependencies.swift; sourceTree = "<group>"; };
+		8641D4F92AE2169000F89E89 /* RealtimeDatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeDatabaseClient.swift; sourceTree = "<group>"; };
+		8641D4FB2AE216DE00F89E89 /* TaskRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryImpl.swift; sourceTree = "<group>"; };
+		8641D4FD2AE216EF00F89E89 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		8641D4FF2AE216F800F89E89 /* TaskData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskData.swift; sourceTree = "<group>"; };
+		8641D5012AE2170700F89E89 /* TaskType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskType.swift; sourceTree = "<group>"; };
+		8641D5032AE2171B00F89E89 /* DeleteTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTaskUseCase.swift; sourceTree = "<group>"; };
+		8641D5052AE2172A00F89E89 /* GetTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTaskUseCase.swift; sourceTree = "<group>"; };
+		8641D5072AE2173700F89E89 /* InsertTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertTaskUseCase.swift; sourceTree = "<group>"; };
+		8641D5092AE2174D00F89E89 /* TaskUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskUseCases.swift; sourceTree = "<group>"; };
+		8641D50B2AE2176400F89E89 /* UpdateTaskUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTaskUseCase.swift; sourceTree = "<group>"; };
 		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
 		867175202ADC826100A769C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +195,7 @@
 		8641D4F02AE2134A00F89E89 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4FB2AE216DE00F89E89 /* TaskRepositoryImpl.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -182,6 +203,7 @@
 		8641D4F12AE2135200F89E89 /* remote */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4F92AE2169000F89E89 /* RealtimeDatabaseClient.swift */,
 			);
 			path = remote;
 			sourceTree = "<group>";
@@ -189,6 +211,8 @@
 		8641D4F22AE2137500F89E89 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4FF2AE216F800F89E89 /* TaskData.swift */,
+				8641D5012AE2170700F89E89 /* TaskType.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -196,6 +220,7 @@
 		8641D4F32AE2137E00F89E89 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4FD2AE216EF00F89E89 /* TaskRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -203,6 +228,11 @@
 		8641D4F42AE2139600F89E89 /* use_cases */ = {
 			isa = PBXGroup;
 			children = (
+				8641D5032AE2171B00F89E89 /* DeleteTaskUseCase.swift */,
+				8641D5052AE2172A00F89E89 /* GetTaskUseCase.swift */,
+				8641D5072AE2173700F89E89 /* InsertTaskUseCase.swift */,
+				8641D5092AE2174D00F89E89 /* TaskUseCases.swift */,
+				8641D50B2AE2176400F89E89 /* UpdateTaskUseCase.swift */,
 			);
 			path = use_cases;
 			sourceTree = "<group>";
@@ -211,6 +241,13 @@
 			isa = PBXGroup;
 			children = (
 				8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+		8641D4F82AE215AF00F89E89 /* di */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = di;
 			sourceTree = "<group>";
@@ -287,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				86F037C42ADCA8EF000B69FE /* presentation */,
+				8641D4F82AE215AF00F89E89 /* di */,
 				86F037C32ADCA8E9000B69FE /* domain */,
 				86F037C22ADCA8E3000B69FE /* data */,
 			);
@@ -509,17 +547,27 @@
 				8641D4EB2AE1F99A00F89E89 /* SignInScreenView.swift in Sources */,
 				8641D4CD2AE1F10600F89E89 /* UserData.swift in Sources */,
 				8641D4E32AE1F8DA00F89E89 /* LoginWIthEmailAndPasswordUseCase.swift in Sources */,
+				8641D4FA2AE2169000F89E89 /* RealtimeDatabaseClient.swift in Sources */,
 				867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */,
 				8641D4E52AE1F90400F89E89 /* LogoutUseCase.swift in Sources */,
 				8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */,
+				8641D5022AE2170700F89E89 /* TaskType.swift in Sources */,
+				8641D50C2AE2176400F89E89 /* UpdateTaskUseCase.swift in Sources */,
+				8641D5042AE2171B00F89E89 /* DeleteTaskUseCase.swift in Sources */,
 				8641D4E12AE1F8AF00F89E89 /* GetSignedInUserUseCase.swift in Sources */,
 				8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */,
+				8641D50A2AE2174D00F89E89 /* TaskUseCases.swift in Sources */,
 				8641D4CA2AE1F0F700F89E89 /* SignInResult.swift in Sources */,
 				8641D4E92AE1F94200F89E89 /* SignInUseCases.swift in Sources */,
+				8641D4FE2AE216EF00F89E89 /* TaskRepository.swift in Sources */,
 				8641D4E72AE1F91C00F89E89 /* SignInWithEmailAndPasswordUseCase.swift in Sources */,
 				8641D4F72AE214DF00F89E89 /* SignInDependencies.swift in Sources */,
+				8641D5062AE2172A00F89E89 /* GetTaskUseCase.swift in Sources */,
+				8641D5082AE2173700F89E89 /* InsertTaskUseCase.swift in Sources */,
 				8641D4C72AE1F0D300F89E89 /* SignInRepository.swift in Sources */,
 				8641D4D02AE1F21D00F89E89 /* SignInRepositoryImpl.swift in Sources */,
+				8641D5002AE216F800F89E89 /* TaskData.swift in Sources */,
+				8641D4FC2AE216DE00F89E89 /* TaskRepositoryImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
