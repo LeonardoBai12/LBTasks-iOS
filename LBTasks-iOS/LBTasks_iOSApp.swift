@@ -23,19 +23,11 @@ struct LBTasks_iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
-        let googleAuthUiClient = GoogleAuthUiClient()
-        let signInRepository: SignInRepository = SignInRepositoryImpl(googleAuthUiClient: googleAuthUiClient)
-        let signInUseCases = SignInUseCases(
-            loginWithEmailPasswordUseCase: LoginWithEmailPasswordUseCase(repository: signInRepository),
-            signInWithEmailPasswordUseCase: SignInWithEmailPasswordUseCase(repository: signInRepository),
-            getSignedInUserUseCase: GetSignedInUserUseCase(repository: signInRepository),
-            logoutUseCase: LogoutUseCase(repository: signInRepository)
-        )
-        let viewModel = SignInViewModel(useCases: signInUseCases)
+        let dependencies = SignInDependencies()
         
         WindowGroup {
             NavigationView {
-                SignInScreenView(viewModel: viewModel)
+                SignInScreenView(viewModel: dependencies.makeSignInViewModel())
             }
         }
     }

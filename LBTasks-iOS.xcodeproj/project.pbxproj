@@ -30,10 +30,10 @@
 		8641D4EB2AE1F99A00F89E89 /* SignInScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EA2AE1F99A00F89E89 /* SignInScreenView.swift */; };
 		8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */; };
 		8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */; };
+		8641D4F72AE214DF00F89E89 /* SignInDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */; };
 		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
 		867175242ADC826100A769C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175232ADC826100A769C7 /* Preview Assets.xcassets */; };
-		867175262ADC826100A769C7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175252ADC826100A769C7 /* Persistence.swift */; };
 		867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 867175272ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld */; };
 		867175332ADC826100A769C7 /* LBTasks_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */; };
 		8671753D2ADC826100A769C7 /* LBTasks_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */; };
@@ -73,11 +73,11 @@
 		8641D4EA2AE1F99A00F89E89 /* SignInScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreenView.swift; sourceTree = "<group>"; };
 		8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
+		8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDependencies.swift; sourceTree = "<group>"; };
 		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
 		867175202ADC826100A769C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867175232ADC826100A769C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		867175252ADC826100A769C7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		867175282ADC826100A769C7 /* LBTasks_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LBTasks_iOS.xcdatamodel; sourceTree = "<group>"; };
 		8671752E2ADC826100A769C7 /* LBTasks-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBTasks-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSTests.swift; sourceTree = "<group>"; };
@@ -172,6 +172,49 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		8641D4F02AE2134A00F89E89 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		8641D4F12AE2135200F89E89 /* remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = remote;
+			sourceTree = "<group>";
+		};
+		8641D4F22AE2137500F89E89 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		8641D4F32AE2137E00F89E89 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		8641D4F42AE2139600F89E89 /* use_cases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = use_cases;
+			sourceTree = "<group>";
+		};
+		8641D4F52AE214D100F89E89 /* di */ = {
+			isa = PBXGroup;
+			children = (
+				8641D4F62AE214DF00F89E89 /* SignInDependencies.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
 		867175102ADC826000A769C7 = {
 			isa = PBXGroup;
 			children = (
@@ -236,7 +279,6 @@
 			isa = PBXGroup;
 			children = (
 				8641D4DD2AE1F88100F89E89 /* util */,
-				86F037C62ADCA902000B69FE /* data */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -254,6 +296,7 @@
 		86F037BD2ADCA80B000B69FE /* sign_in */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4F52AE214D100F89E89 /* di */,
 				86F037C02ADCA8C5000B69FE /* data */,
 				86F037BF2ADCA8BD000B69FE /* domain */,
 				86F037BE2ADCA8B1000B69FE /* presentation */,
@@ -293,6 +336,8 @@
 		86F037C22ADCA8E3000B69FE /* data */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4F12AE2135200F89E89 /* remote */,
+				8641D4F02AE2134A00F89E89 /* repository */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -300,6 +345,9 @@
 		86F037C32ADCA8E9000B69FE /* domain */ = {
 			isa = PBXGroup;
 			children = (
+				8641D4F42AE2139600F89E89 /* use_cases */,
+				8641D4F32AE2137E00F89E89 /* repository */,
+				8641D4F22AE2137500F89E89 /* model */,
 			);
 			path = domain;
 			sourceTree = "<group>";
@@ -309,14 +357,6 @@
 			children = (
 			);
 			path = presentation;
-			sourceTree = "<group>";
-		};
-		86F037C62ADCA902000B69FE /* data */ = {
-			isa = PBXGroup;
-			children = (
-				867175252ADC826100A769C7 /* Persistence.swift */,
-			);
-			path = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -463,7 +503,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867175262ADC826100A769C7 /* Persistence.swift in Sources */,
 				8641D4D32AE1F29C00F89E89 /* GoogleAuthUiClient.swift in Sources */,
 				8641D4DF2AE1F88E00F89E89 /* StringExtensions.swift in Sources */,
 				8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */,
@@ -478,6 +517,7 @@
 				8641D4CA2AE1F0F700F89E89 /* SignInResult.swift in Sources */,
 				8641D4E92AE1F94200F89E89 /* SignInUseCases.swift in Sources */,
 				8641D4E72AE1F91C00F89E89 /* SignInWithEmailAndPasswordUseCase.swift in Sources */,
+				8641D4F72AE214DF00F89E89 /* SignInDependencies.swift in Sources */,
 				8641D4C72AE1F0D300F89E89 /* SignInRepository.swift in Sources */,
 				8641D4D02AE1F21D00F89E89 /* SignInRepositoryImpl.swift in Sources */,
 			);
