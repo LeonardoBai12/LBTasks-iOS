@@ -31,7 +31,6 @@
 		8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */; };
 		8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */; };
 		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
-		8671751F2ADC826000A769C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751E2ADC826000A769C7 /* ContentView.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
 		867175242ADC826100A769C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175232ADC826100A769C7 /* Preview Assets.xcassets */; };
 		867175262ADC826100A769C7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175252ADC826100A769C7 /* Persistence.swift */; };
@@ -76,7 +75,6 @@
 		8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInState.swift; sourceTree = "<group>"; };
 		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
-		8671751E2ADC826000A769C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		867175202ADC826100A769C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867175232ADC826100A769C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		867175252ADC826100A769C7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 			children = (
 				8641D4DD2AE1F88100F89E89 /* util */,
 				86F037C62ADCA902000B69FE /* data */,
-				86F037C52ADCA8F9000B69FE /* presentation */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -310,14 +307,6 @@
 		86F037C42ADCA8EF000B69FE /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = presentation;
-			sourceTree = "<group>";
-		};
-		86F037C52ADCA8F9000B69FE /* presentation */ = {
-			isa = PBXGroup;
-			children = (
-				8671751E2ADC826000A769C7 /* ContentView.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -478,7 +467,6 @@
 				8641D4D32AE1F29C00F89E89 /* GoogleAuthUiClient.swift in Sources */,
 				8641D4DF2AE1F88E00F89E89 /* StringExtensions.swift in Sources */,
 				8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */,
-				8671751F2ADC826000A769C7 /* ContentView.swift in Sources */,
 				8641D4EB2AE1F99A00F89E89 /* SignInScreenView.swift in Sources */,
 				8641D4CD2AE1F10600F89E89 /* UserData.swift in Sources */,
 				8641D4E32AE1F8DA00F89E89 /* LoginWIthEmailAndPasswordUseCase.swift in Sources */,

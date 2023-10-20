@@ -10,7 +10,7 @@ import FirebaseAuth
 class GoogleAuthUiClient {
     private let auth = Auth.auth()
     
-    func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
+    func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
         auth.signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print(error)
@@ -27,7 +27,7 @@ class GoogleAuthUiClient {
         }
     }
     
-    func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
+    func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
         auth.createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
                 print(error)

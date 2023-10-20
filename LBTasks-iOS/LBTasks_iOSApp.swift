@@ -9,25 +9,34 @@ import SwiftUI
 import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(
-    _ application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
-  ) -> Bool {
-    FirebaseApp.configure()
-    return true
-  }
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        FirebaseApp.configure()
+        return true
+    }
 }
 
 @main
 struct LBTasks_iOSApp: App {
-  // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-  var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        ContentView()
-      }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    var body: some Scene {
+        let googleAuthUiClient = GoogleAuthUiClient()
+        let signInRepository: SignInRepository = SignInRepositoryImpl(googleAuthUiClient: googleAuthUiClient)
+        let signInUseCases = SignInUseCases(
+            loginWithEmailPasswordUseCase: LoginWithEmailPasswordUseCase(repository: signInRepository),
+            signInWithEmailPasswordUseCase: SignInWithEmailPasswordUseCase(repository: signInRepository),
+            getSignedInUserUseCase: GetSignedInUserUseCase(repository: signInRepository),
+            logoutUseCase: LogoutUseCase(repository: signInRepository)
+        )
+        let viewModel = SignInViewModel(useCases: signInUseCases)
+        
+        WindowGroup {
+            NavigationView {
+                SignInScreenView(viewModel: viewModel)
+            }
+        }
     }
-  }
 }

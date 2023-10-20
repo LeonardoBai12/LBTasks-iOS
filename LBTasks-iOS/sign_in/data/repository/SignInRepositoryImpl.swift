@@ -5,7 +5,7 @@
 //  Created by Leonardo Bai on 19/10/23.
 //
 
-class FirebaseSignInRepository: SignInRepository {
+class SignInRepositoryImpl: SignInRepository {
     private let googleAuthUiClient: GoogleAuthUiClient
 
     init(googleAuthUiClient: GoogleAuthUiClient) {
