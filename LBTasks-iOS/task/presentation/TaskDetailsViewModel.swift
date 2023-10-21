@@ -13,15 +13,19 @@ class TaskDetailsViewModel: ObservableObject {
     private let useCases: TaskUseCases
     @Published var state = TaskDetailsState()
     
-    var userData: UserData?
     
-    init(useCases: TaskUseCases, user: UserData) {
+    init(useCases: TaskUseCases) {
         self.useCases = useCases
-        self.userData = user
     }
     
-    func onRequestInsert(title: String, description: String, date: String, time: String) {
-        guard let userData = userData, let task = state.task else { return }
+    func onRequestInsert(
+        userData: UserData,
+        title: String,
+        description: String,
+        date: String,
+        time: String
+    ) {
+        guard let task = state.task else { return }
         
         do {
             try useCases.insertTaskUseCase.invoke(
@@ -37,8 +41,14 @@ class TaskDetailsViewModel: ObservableObject {
         }
     }
     
-    func onRequestUpdate(title: String, description: String, date: String, time: String) {
-        guard let userData = userData, let task = state.task else { return }
+    func onRequestUpdate(
+        userData: UserData,
+        title: String,
+        description: String,
+        date: String,
+        time: String
+    ) {
+        guard let task = state.task else { return }
         
         do {
             try useCases.updateTaskUseCase.invoke(
@@ -51,7 +61,7 @@ class TaskDetailsViewModel: ObservableObject {
                 deadlineTime: time
             )
         } catch {
-                
+            
         }
     }
 }

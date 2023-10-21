@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SignInScreenView: View {
-    private let destination: TaskScreenView
     @ObservedObject var viewModel: SignInViewModel
+    @ObservedObject var taskViewModel: TaskViewModel
+    @ObservedObject var taskDetailsViewModel: TaskDetailsViewModel
     
     @State private var email = ""
     @State private var password = ""
@@ -18,61 +19,94 @@ struct SignInScreenView: View {
     @State private var showAlert = false
     @State private var errorMessage = "Unknown error"
     
+    @State private var isNavigationActive = false
+    
     init(
         viewModel: SignInViewModel,
-        destination: TaskScreenView
+        taskViewModel: TaskViewModel,
+        taskDetailsViewModel: TaskDetailsViewModel
     ) {
         self.viewModel = viewModel
-        self.destination = destination
+        self.taskViewModel = taskViewModel
+        self.taskDetailsViewModel = taskDetailsViewModel
     }
     
     var body: some View {
-        VStack {
-            TextField("Email", text: $email)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            SecureField("Password", text: $password)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            
-            SecureField("Repeat Password", text: $repeatedPassword)
-                .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-
-            
-            Button("Sign In with Email") {
-                viewModel.signInWithEmailAndPassword(
-                    email: email,
-                    password: password,
-                    repeatedPassword: repeatedPassword
-                )
-            }
-            
-            Button("Login with Email") {
-                viewModel.loginWithEmailAndPassword(email: email, password: password)
-            }
-            Button("Show current user") {
-                errorMessage = viewModel.getSignedInUser()?.email ?? "No user"
-                showAlert = true
-            }
-            
-            NavigationLink(
-                destination: destination,
-                label: {
-                    HStack {
-                        Image(systemName: "apple.logo")
-                        Text("Continuar com Apple")
-                            .font(.title2)
-                            .padding(.vertical, 8)
-                    }.frame(maxWidth: .infinity)
+        NavigationStack {
+            VStack {
+                VStack(alignment: .leading) {
+                    Image(systemName: "note.text")
+                        .resizable()
+                        .frame(width: 20, height: 25)
+                        .foregroundColor(.white)
+                        .opacity(0.9)
+                        .frame(width: 50, height: 50)
+                        .background(.tint)
+                        .cornerRadius(15)
                     
-                }
-            ).buttonStyle(.borderedProminent)
-                .tint(.black)
-            
-            Button("Logout") {
-                viewModel.logout()
+                    Text("LB Tasks")
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }.padding()
+                
+                Spacer()
+                
+                DefaultTextField(
+                    placeholder: "Email",
+                    value: $email,
+                    imageName: "envelope.fill"
+                )
+                DefaultTextField(
+                    placeholder: "Password",
+                    value: $password,
+                    imageName: "lock.fill",
+                    isPassword: true
+                )
+                DefaultTextField(
+                    placeholder: "Repeat password",
+                    value: $repeatedPassword,
+                    imageName: "lock.fill",
+                    isPassword: true
+                )
+                
+                Button {
+                    viewModel.loginWithEmailAndPassword(
+                        email: email,
+                        password: password
+                    )
+                } label: {
+                    Text("Login")
+                        .frame(maxWidth: .infinity)
+                        .font(.title2)
+                        .padding(.vertical, 8)
+                }.buttonStyle(.borderedProminent)
+                    .padding(.bottom)
+                
+                Button {
+                    viewModel.signInWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                        repeatedPassword: repeatedPassword
+                    )
+                } label: {
+                    Text("Sign in")
+                        .frame(maxWidth: .infinity)
+                        .font(.title2)
+                        .padding(.vertical, 8)
+                }.buttonStyle(.bordered)
+                    .padding(.bottom)
+            }
+            .navigationDestination(
+                isPresented: $isNavigationActive
+            ) {
+                TaskScreenView(
+                    viewModel: taskViewModel,
+                    taskDetailsViewModel: taskDetailsViewModel,
+                    userData: viewModel.getSignedInUser(),
+                    logout: {
+                        viewModel.logout()
+                    }
+                )
             }
         }
         .padding()
@@ -83,10 +117,27 @@ struct SignInScreenView: View {
             )
         }
         .onReceive(viewModel.$state) { state in
-            if let signInError = state.signInError {
+            if state.isSignInSuccessful {
+                showAlert = false
+                isNavigationActive = true
+            } else if let signInError = state.signInError {
                 errorMessage = signInError
                 showAlert = true
             }
         }
+    }
+}
+
+struct SignInScreenView_Previews: PreviewProvider {
+    static var previews: some View {
+        let taskViewModel = TaskDependencies().makeTaskViewModel()
+        let signInViewModel = SignInDependencies().makeSignInViewModel()
+        let taskDetailsViewModel = TaskDependencies().makeTaskDetailsViewModel()
+        
+        return SignInScreenView(
+            viewModel: signInViewModel,
+            taskViewModel: taskViewModel,
+            taskDetailsViewModel: taskDetailsViewModel
+        )
     }
 }

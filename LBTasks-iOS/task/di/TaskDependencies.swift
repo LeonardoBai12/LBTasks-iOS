@@ -26,7 +26,7 @@ class TaskDependencies {
         return TaskViewModel(useCases: taskUseCases)
     }
     
-    func makeTaskDetailsViewModel(user: UserData) -> TaskDetailsViewModel {
-        return TaskDetailsViewModel(useCases: taskUseCases, user: user)
+    func makeTaskDetailsViewModel() -> TaskDetailsViewModel {
+        return TaskDetailsViewModel(useCases: taskUseCases)
     }
 }

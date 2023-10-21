@@ -24,18 +24,34 @@ struct LBTasks_iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
-        let dependencies = SignInDependencies().makeSignInViewModel()
+        let signInViewModel = SignInDependencies().makeSignInViewModel()
         let taskDependencies = TaskDependencies()
+        let taskViewModel = taskDependencies.makeTaskViewModel()
+        var user = signInViewModel.getSignedInUser()
+        let taskDetailsViewModel = taskDependencies.makeTaskDetailsViewModel()
+        
+        let taskScreen = TaskScreenView(
+            viewModel: taskViewModel,
+            taskDetailsViewModel: taskDetailsViewModel,
+            userData: signInViewModel.getSignedInUser(),
+            logout: {
+                signInViewModel.logout()
+            }
+        )
+        
+        let signInScreen = SignInScreenView(
+            viewModel: signInViewModel,
+            taskViewModel: taskViewModel,
+            taskDetailsViewModel: taskDetailsViewModel
+        )
         
         WindowGroup {
             NavigationView {
-                SignInScreenView(
-                    viewModel: dependencies,
-                    destination: TaskScreenView(
-                        viewModel: taskDependencies.makeTaskViewModel(),
-                        userData: dependencies.getSignedInUser()!
-                    )
-                )
+                if user != nil {
+                    taskScreen
+                } else {
+                    signInScreen
+                }
             }
         }
     }

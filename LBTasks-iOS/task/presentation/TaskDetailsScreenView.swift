@@ -15,15 +15,28 @@ struct TaskDetailsScreenView: View {
     @State private var editedDescription: String
     @State private var editedDate: String
     @State private var editedTime: String
+    
+    private var isEdit = false
+    private let onDone: () -> Void
+    
+    private var user: UserData
 
-    init(viewModel: TaskDetailsViewModel, task: TaskData) {
-        editedTitle = task.title
-        editedDescription = task.description ?? ""
-        editedDate = task.deadlineDate ?? ""
-        editedTime = task.deadlineTime ?? ""
+    init(
+        viewModel: TaskDetailsViewModel,
+        task: TaskData?,
+        user: UserData,
+        onDone: @escaping () -> Void
+    ) {
+        editedTitle = task?.title ?? ""
+        editedDescription = task?.description ?? ""
+        editedDate = task?.deadlineDate ?? ""
+        editedTime = task?.deadlineTime ?? ""
         
+        isEdit = task != nil
+        
+        self.onDone = onDone
         self.viewModel = viewModel
-        self.viewModel.state.task = task
+        self.user = user
     }
     
     var body: some View {
@@ -33,30 +46,35 @@ struct TaskDetailsScreenView: View {
                 TextField("Task Description", text: $editedDescription)
                 TextField("Task Deadline Date", text: $editedDate)
                 TextField("Task Deadline Time", text: $editedTime)
-                
-
-                Spacer()
-                
-                Button("insert Task") {
-                    viewModel.onRequestInsert(
-                        title: editedTitle,
-                        description: editedDescription,
-                        date: editedDate,
-                        time: editedTime
-                    )
-                }
-
-                Button("Edit Task") {
-                    viewModel.onRequestUpdate(
-                        title: editedTitle,
-                        description: editedDescription,
-                        date: editedDate,
-                        time: editedTime
-                    )
-                }
-                .padding()
             }
             .navigationBarTitle("Task Details")
+            .toolbar {
+                ToolbarItem {
+                    Button {
+                        if isEdit {
+                            viewModel.onRequestUpdate(
+                                userData: user,
+                                title: editedTitle,
+                                description: editedDescription,
+                                date: editedDate,
+                                time: editedTime
+                            )
+                        } else {
+                            viewModel.onRequestInsert(
+                                userData: user,
+                                title: editedTitle,
+                                description: editedDescription,
+                                date: editedDate,
+                                time: editedTime
+                            )
+                        }
+                        
+                        onDone()
+                    } label: {
+                        Text("Done")
+                    }
+                }
+            }
         }
     }
 }
