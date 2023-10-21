@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -23,11 +24,18 @@ struct LBTasks_iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
-        let dependencies = SignInDependencies()
+        let dependencies = SignInDependencies().makeSignInViewModel()
+        let taskDependencies = TaskDependencies()
         
         WindowGroup {
             NavigationView {
-                SignInScreenView(viewModel: dependencies.makeSignInViewModel())
+                SignInScreenView(
+                    viewModel: dependencies,
+                    destination: TaskScreenView(
+                        viewModel: taskDependencies.makeTaskViewModel(),
+                        userData: dependencies.getSignedInUser()!
+                    )
+                )
             }
         }
     }

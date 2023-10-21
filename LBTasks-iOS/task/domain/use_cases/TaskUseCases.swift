@@ -9,7 +9,7 @@ import Foundation
 
 struct TaskUseCases {
     let deleteTaskUseCase: DeleteTaskUseCase
-    let getTaskUseCase: GetTaskUseCase
+    let getTasksUseCase: GetTasksUseCase
     let insertTaskUseCase: InsertTaskUseCase
     let updateTaskUseCase: UpdateTaskUseCase
 }

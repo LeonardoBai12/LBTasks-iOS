@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol TaskRepository {
-    func deleteTask(userData: UserData, task: TaskData, completion: @escaping (Error?) -> Void)
-    func insertTask(userData: UserData, task: TaskData, completion: @escaping (Error?) -> Void)
+    func deleteTask(userData: UserData, task: TaskData)
+    func getTasks(userData: UserData) -> AnyPublisher<[TaskData], Error>
+    func insertTask(userData: UserData, task: TaskData)
 }

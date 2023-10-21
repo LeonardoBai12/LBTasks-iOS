@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignInScreenView: View {
+    private let destination: TaskScreenView
     @ObservedObject var viewModel: SignInViewModel
     
     @State private var email = ""
@@ -16,6 +17,14 @@ struct SignInScreenView: View {
     
     @State private var showAlert = false
     @State private var errorMessage = "Unknown error"
+    
+    init(
+        viewModel: SignInViewModel,
+        destination: TaskScreenView
+    ) {
+        self.viewModel = viewModel
+        self.destination = destination
+    }
     
     var body: some View {
         VStack {
@@ -47,6 +56,21 @@ struct SignInScreenView: View {
                 errorMessage = viewModel.getSignedInUser()?.email ?? "No user"
                 showAlert = true
             }
+            
+            NavigationLink(
+                destination: destination,
+                label: {
+                    HStack {
+                        Image(systemName: "apple.logo")
+                        Text("Continuar com Apple")
+                            .font(.title2)
+                            .padding(.vertical, 8)
+                    }.frame(maxWidth: .infinity)
+                    
+                }
+            ).buttonStyle(.borderedProminent)
+                .tint(.black)
+            
             Button("Logout") {
                 viewModel.logout()
             }

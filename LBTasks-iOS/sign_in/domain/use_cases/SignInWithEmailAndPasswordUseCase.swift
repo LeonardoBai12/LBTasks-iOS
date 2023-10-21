@@ -12,7 +12,12 @@ class SignInWithEmailPasswordUseCase {
         self.repository = repository
     }
 
-    func invoke(email: String, password: String, repeatedPassword: String, completion: @escaping (SignInResult) -> Void) {
+    func invoke(
+        email: String,
+        password: String,
+        repeatedPassword: String,
+        completion: @escaping (SignInResult) -> Void
+    ) {
         guard email.isValidEmail() else {
             completion(SignInResult(data: nil, errorMessage: "Write a valid email"))
             return

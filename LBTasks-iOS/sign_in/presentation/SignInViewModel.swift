@@ -19,10 +19,6 @@ class SignInViewModel: ObservableObject {
         self.useCases = useCases
     }
     
-    enum UiEvent {
-        case showToast(String)
-    }
-    
     func signInWithEmailAndPassword(email: String, password: String, repeatedPassword: String) {
         useCases.signInWithEmailPasswordUseCase.invoke(
             email: email,

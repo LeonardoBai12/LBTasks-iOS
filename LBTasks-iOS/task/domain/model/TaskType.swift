@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+enum TaskType: String {
+    case home
+    case business
+    case study
+    case hobbies
+    case shopping
+    case travel
+}
