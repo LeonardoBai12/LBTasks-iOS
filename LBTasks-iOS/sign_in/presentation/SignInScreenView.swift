@@ -96,7 +96,7 @@ struct SignInScreenView: View {
                 }.buttonStyle(.bordered)
                     .padding(.bottom)
             }
-            .navigationDestination(
+            .fullScreenCover(
                 isPresented: $isNavigationActive
             ) {
                 TaskScreenView(

@@ -27,7 +27,7 @@ struct LBTasks_iOSApp: App {
         let signInViewModel = SignInDependencies().makeSignInViewModel()
         let taskDependencies = TaskDependencies()
         let taskViewModel = taskDependencies.makeTaskViewModel()
-        var user = signInViewModel.getSignedInUser()
+        let user = signInViewModel.getSignedInUser()
         let taskDetailsViewModel = taskDependencies.makeTaskDetailsViewModel()
         
         let taskScreen = TaskScreenView(

@@ -11,6 +11,8 @@ struct UserDetailsScreen: View {
     private let user: UserData
     private let logout: () -> Void
     
+    @State var goToSignIn = false
+    
     init(
         user: UserData,
         logout: @escaping () -> Void
@@ -22,9 +24,9 @@ struct UserDetailsScreen: View {
     var body: some View {
         NavigationStack {
             VStack {
-                if user.profilePictureUrl?.isEmpty == true {
+                if (user.profilePictureUrl  ?? "").isEmpty {
                     Text(user.email?.first?.uppercased() ?? "")
-                        .font(.system(size: 200))
+                        .font(.system(size: 150))
                         .frame(maxWidth: 250, maxHeight: 250)
                         .background(.tertiary)
                         .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
@@ -51,10 +53,12 @@ struct UserDetailsScreen: View {
                     .font(.headline)
                 
                 Spacer()
-            }.toolbar {
+            }
+            .toolbar {
                 ToolbarItem {
                     Button {
                         logout()
+                        goToSignIn.toggle()
                     } label: {
                         Text("Logout")
                     }
@@ -63,6 +67,15 @@ struct UserDetailsScreen: View {
         }.navigationBarTitle("")
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+            .fullScreenCover(
+                isPresented: $goToSignIn
+            ) {
+                SignInScreenView(
+                    viewModel: SignInDependencies().makeSignInViewModel(),
+                    taskViewModel: TaskDependencies().makeTaskViewModel(),
+                    taskDetailsViewModel: TaskDependencies().makeTaskDetailsViewModel()
+                )
+            }
     }
 }
 

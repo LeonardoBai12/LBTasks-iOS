@@ -47,45 +47,57 @@ struct TaskScreenView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                List(filteredTasks, id: \.uuid) { task in
-                    TaskRowView(task: task, user:  viewModel.userData!)
-                    
-                    
-                   // taskToEdit = task
-               //     showSheet.toggle()
-                    
-                }
-                .toolbar {
-                    ToolbarItem {
-                        Button {
-                            taskToEdit = nil
-                            showSheet.toggle()
-                        } label: {
-                            Label("Add Item", systemImage: "plus")
+        TabView {
+            NavigationStack {
+                VStack {
+                    List(filteredTasks, id: \.uuid) { task in
+                        TaskRowView(task: task, user:  viewModel.userData!)
+                        
+                        // taskToEdit = task
+                        //     showSheet.toggle()
+                        
+                    }
+                    .toolbar {
+                        ToolbarItem {
+                            Button {
+                                taskToEdit = nil
+                                showSheet.toggle()
+                            } label: {
+                                Label("Add Item", systemImage: "plus")
+                            }
                         }
                     }
+                    .sheet(
+                        isPresented: $showSheet,
+                        content: {
+                            TaskDetailsScreenView(
+                                viewModel: taskDetailsViewModel,
+                                task: taskToEdit,
+                                user: viewModel.userData!,
+                                onDone: {
+                                    showSheet.toggle()
+                                    viewModel.getTasks(userData: viewModel.userData!)
+                                }
+                            )
+                        }
+                    )
+                    .searchable(text: $searchFilter, placement: .navigationBarDrawer(displayMode: .always))
                 }
-                .sheet(
-                    isPresented: $showSheet,
-                    content: {
-                        TaskDetailsScreenView(
-                            viewModel: taskDetailsViewModel,
-                            task: taskToEdit,
-                            user: viewModel.userData!,
-                            onDone: {
-                                showSheet.toggle()
-                                viewModel.getTasks(userData: viewModel.userData!)
-                            }
-                        )
-                    }
-                )
             }
-        }.searchable(text: $searchFilter)
-            .navigationBarTitle("")
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
+            .tabItem {
+                Image(systemName: "note.text")
+                Text("Tasks")
+            }
+            
+            UserDetailsScreen(user: viewModel.userData!, logout: logout)
+                .tabItem {
+                    Image(systemName: "person.fill")
+                    Text("Profile")
+                }
+        }
+        .navigationBarTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
