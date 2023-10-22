@@ -11,11 +11,12 @@ struct TaskScreenView: View {
     @ObservedObject var viewModel: TaskViewModel
     @ObservedObject var taskDetailsViewModel: TaskDetailsViewModel
     @State private var searchFilter = ""
-    @State private var taskToEdit: TaskData? = nil
     
     private let logout: () -> Void
     
     @State var showSheet = false
+    @State var isEditing = false
+    @State private var taskToEdit: TaskData? = nil
     
     var filteredTasks: [TaskData] {
         if searchFilter.isEmpty {
@@ -50,14 +51,33 @@ struct TaskScreenView: View {
         TabView {
             NavigationStack {
                 VStack {
-                    List(filteredTasks, id: \.uuid) { task in
-                        TaskRowView(task: task, user:  viewModel.userData!)
-                        
-                        // taskToEdit = task
-                        //     showSheet.toggle()
-                        
+                    List {
+                        ForEach(filteredTasks) { task in
+                            TaskRowView(
+                                task: task,
+                                user:  viewModel.userData!,
+                                isEditing: $isEditing,
+                                onEditAction: {
+                                    taskToEdit = task
+                                    
+                                    if isEditing {
+                                        showSheet.toggle()
+                                    }
+                                }
+                            )
+                        }.onDelete(perform: { indexSet in
+                            if let indexToDelete = indexSet.first, indexToDelete < filteredTasks.count {
+                                let taskToDelete = filteredTasks[indexToDelete]
+                                onDelete(task: taskToDelete)
+                            }
+                        })
                     }
                     .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            EditButton().simultaneousGesture(TapGesture().onEnded({
+                                isEditing.toggle()
+                            }))
+                        }
                         ToolbarItem {
                             Button {
                                 taskToEdit = nil
@@ -99,18 +119,32 @@ struct TaskScreenView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
+    
+    private func onDelete(task: TaskData) {
+        viewModel.onRequestDelete(task: task)
+    }
 }
 
 struct TaskRowView: View {
     private let task: TaskData
     private let user: UserData
     
-    @State var showDescription = false
-    @State var icon = "chevron.right"
+    @State private var showDescription = false
+    @State private var icon = "chevron.right"
     
-    init(task: TaskData, user: UserData) {
+    @State private var isEditing: Binding<Bool>
+    @State private var onEditAction: () -> Void
+    
+    init(
+        task: TaskData,
+        user: UserData,
+        isEditing: Binding<Bool>,
+        onEditAction: @escaping () -> Void
+    ) {
         self.task = task
         self.user = user
+        self.isEditing = isEditing
+        self.onEditAction = onEditAction
     }
     
     var body: some View {
@@ -126,23 +160,25 @@ struct TaskRowView: View {
                     .padding(.vertical, 2)
                 
                 Text(task.title)
-                Spacer()
                 
                 if !(task.description ?? "").isEmpty {
-                    Button {
-                        showDescription.toggle()
-                        
-                        withAnimation(.interactiveSpring) {
-                            if !showDescription {
-                                icon = "chevron.right"
-                            } else {
-                                icon = "chevron.down"
-                            }
+                    Spacer()
+                    Image(systemName: icon)
+                }
+            }.onTapGesture {
+                if !(task.description ?? "").isEmpty && !isEditing.wrappedValue {
+                    showDescription.toggle()
+                    
+                    withAnimation(.interactiveSpring) {
+                        if !showDescription {
+                            icon = "chevron.right"
+                        } else {
+                            icon = "chevron.down"
                         }
-                    } label:{
-                        Image(systemName: icon)
                     }
                 }
+                
+                onEditAction()
             }
             
             if showDescription {

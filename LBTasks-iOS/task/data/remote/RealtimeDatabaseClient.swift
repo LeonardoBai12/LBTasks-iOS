@@ -16,7 +16,7 @@ class RealtimeDatabaseClient {
         guard let userId = user.userId else {
             return
         }
-        let taskReference = database.child(userId).child(task.uuid)
+        let taskReference = database.child(userId).child(task.id)
         taskReference.setValue(task.toDictionary())
     }
     
@@ -24,7 +24,7 @@ class RealtimeDatabaseClient {
         guard let userId = user.userId else {
             return
         }
-        let taskReference = database.child(userId).child(task.uuid)
+        let taskReference = database.child(userId).child(task.id)
         taskReference.removeValue()
     }
     
@@ -35,10 +35,6 @@ class RealtimeDatabaseClient {
         }
         
         database.child(userId).observeSingleEvent(of: .value) { snapshot, error in
-            let children = snapshot.children
-            
-            let count = snapshot.childrenCount
-            
             var tasks: [TaskData] = []
             for case let child as DataSnapshot in snapshot.children {
                 if let value = child.value as? [String: String] {

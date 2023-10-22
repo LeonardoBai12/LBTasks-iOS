@@ -206,8 +206,8 @@
             filePath = "LBTasks-iOS/task/data/remote/RealtimeDatabaseClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "getTasksFromUser(user:completion:)"
             landmarkType = "7">
             <Locations>
@@ -577,6 +577,54 @@
             endingLineNumber = "22"
             landmarkName = "filteredTasks"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DE425ECE-6DD5-43A1-AC25-28AED043005D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LBTasks-iOS/task/presentation/listing/TaskScreenView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "onDelete(task:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DE425ECE-6DD5-43A1-AC25-28AED043005D - 7c8908075975983b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LBTasks_iOS.TaskScreenView.onDelete(task: LBTasks_iOS.TaskData) -&gt; ()"
+                  moduleName = "LBTasks-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardobai/Projetos/LBTasks-iOS/LBTasks-iOS/task/presentation/listing/TaskScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "DE425ECE-6DD5-43A1-AC25-28AED043005D - 7c8908075975981a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "LBTasks_iOS.TaskScreenView.onDelete(task: LBTasks_iOS.TaskData) -&gt; ()"
+                  moduleName = "LBTasks-iOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/leonardobai/Projetos/LBTasks-iOS/LBTasks-iOS/task/presentation/listing/TaskScreenView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

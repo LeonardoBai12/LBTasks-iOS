@@ -28,7 +28,7 @@ class UpdateTaskUseCase {
         }
         
         let updatedTask = TaskData(
-            uuid: originalTask.uuid,
+            id: originalTask.id,
             title: title,
             description: description,
             taskType: taskType,

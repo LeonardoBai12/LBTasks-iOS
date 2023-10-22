@@ -48,6 +48,7 @@
 		8641D51A2AE34BAC00F89E89 /* TaskDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */; };
 		8641D51C2AE3504200F89E89 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D51B2AE3504200F89E89 /* TaskState.swift */; };
 		8641D51E2AE37AD700F89E89 /* TaskDetailsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */; };
+		86642BAF2AE5CB0500CF0598 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86642BAE2AE5CB0500CF0598 /* File.swift */; };
 		8666F91F2AE4040200A4FD80 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */; };
 		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
@@ -110,6 +111,7 @@
 		8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewModel.swift; sourceTree = "<group>"; };
 		8641D51B2AE3504200F89E89 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsState.swift; sourceTree = "<group>"; };
+		86642BAE2AE5CB0500CF0598 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 		867175102ADC826000A769C7 = {
 			isa = PBXGroup;
 			children = (
+				86642BAE2AE5CB0500CF0598 /* File.swift */,
 				8671751B2ADC826000A769C7 /* LBTasks-iOS */,
 				867175312ADC826100A769C7 /* LBTasks-iOSTests */,
 				8671753B2ADC826100A769C7 /* LBTasks-iOSUITests */,
@@ -603,6 +606,7 @@
 				8641D4FA2AE2169000F89E89 /* RealtimeDatabaseClient.swift in Sources */,
 				867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */,
 				8641D5102AE219CF00F89E89 /* TaskScreenView.swift in Sources */,
+				86642BAF2AE5CB0500CF0598 /* File.swift in Sources */,
 				8641D4E52AE1F90400F89E89 /* LogoutUseCase.swift in Sources */,
 				8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */,
 				8641D5022AE2170700F89E89 /* TaskType.swift in Sources */,
