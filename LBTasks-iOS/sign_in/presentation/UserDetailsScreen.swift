@@ -70,10 +70,12 @@ struct UserDetailsScreen: View {
             .fullScreenCover(
                 isPresented: $goToSignIn
             ) {
+                let taskDependencies = TaskDependencies()
+                
                 SignInScreenView(
                     viewModel: SignInDependencies().makeSignInViewModel(),
-                    taskViewModel: TaskDependencies().makeTaskViewModel(),
-                    taskDetailsViewModel: TaskDependencies().makeTaskDetailsViewModel()
+                    taskViewModel: taskDependencies.makeTaskViewModel(),
+                    taskDetailsViewModel: taskDependencies.makeTaskDetailsViewModel()
                 )
             }
     }

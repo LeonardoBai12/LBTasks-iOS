@@ -89,7 +89,7 @@ struct TaskScreenView: View {
                 Text("Tasks")
             }
             
-            UserDetailsScreen(user: viewModel.userData!, logout: logout)
+            UserDetailsScreen(user: viewModel.userData ?? UserData(), logout: logout)
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("Profile")
