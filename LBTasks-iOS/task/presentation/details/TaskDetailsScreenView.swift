@@ -185,6 +185,8 @@ struct CustomDatePicker: View {
     let displayedComponents: DatePicker.Components
     
     var body: some View {
+        
+        
         DatePicker(
             label,
             selection: Binding(
@@ -203,7 +205,7 @@ struct CustomDatePicker: View {
                     editedDate.wrappedValue = dateFormatter.string(from: newDate)
                 }
             ),
-            in: Date()..., displayedComponents: displayedComponents)
+            displayedComponents: displayedComponents)
         .datePickerStyle(.compact)
     }
 }
