@@ -148,12 +148,10 @@ struct TaskRowView: View {
                     HStack {
                         Image(systemName: task.taskType.getTaskTypeByName()?.getImageName() ?? "")
                             .foregroundColor(.white)
-                            .opacity(0.9)
                             .frame(width: 40, height: 40)
-                            .background(.placeholder)
+                            .background(.tint)
                             .cornerRadius(8)
                             .padding(.vertical, 2)
-                            .tint(.secondary)
                         
                         VStack {
                             Text(task.title)
