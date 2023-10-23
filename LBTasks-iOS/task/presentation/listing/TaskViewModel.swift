@@ -13,7 +13,6 @@ class TaskViewModel: ObservableObject {
     private let useCases: TaskUseCases
     
     @Published var state = TaskState()
-    private var tasks = [TaskData]()
     private var getTasksCancellable: AnyCancellable?
     
     var userData: UserData?

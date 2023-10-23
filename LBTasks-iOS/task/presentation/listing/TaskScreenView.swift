@@ -51,7 +51,7 @@ struct TaskScreenView: View {
             NavigationStack {
                 VStack {
                     List {
-                        ForEach(filteredTasks) { task in
+                        ForEach(filteredTasks) { task in                            
                             TaskRowView(
                                 task: task,
                                 user:  viewModel.userData!,
@@ -62,12 +62,14 @@ struct TaskScreenView: View {
                                     showSheet.toggle()
                                 }
                             )
-                        }.onDelete(perform: { indexSet in
-                            if let indexToDelete = indexSet.first, indexToDelete < filteredTasks.count {
-                                let taskToDelete = filteredTasks[indexToDelete]
-                                onDelete(task: taskToDelete)
+                        }.onDelete(
+                            perform: { indexSet in
+                                if let indexToDelete = indexSet.first, indexToDelete < filteredTasks.count {
+                                    let taskToDelete = filteredTasks[indexToDelete]
+                                    onDelete(task: taskToDelete)
+                                }
                             }
-                        })
+                        )
                     }
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
