@@ -96,7 +96,7 @@ struct TaskScreenView: View {
                             )
                         }
                     )
-                    .searchable(text: $searchFilter, placement: .navigationBarDrawer(displayMode: .always))
+                    .searchable(text: $searchFilter)
                 }
             }
             .tabItem {

@@ -101,26 +101,12 @@ struct TaskDetailsScreenView: View {
                         Toggle(isOn: $hasDeadlineDate, label: { EmptyView() })
                     }
                     if hasDeadlineDate {
-                        DatePicker(
-                            "Select a date",
-                            selection: Binding(
-                                get: {
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "dd/MM/yyyy"
-                                    if let date = dateFormatter.date(from: editedDate) {
-                                        return date
-                                    } else {
-                                        return Date()
-                                    }
-                                },
-                                set: { newDate in
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "dd/MM/yyyy"
-                                    editedDate = dateFormatter.string(from: newDate)
-                                }
-                            ),
-                            in: Date()..., displayedComponents: .date)
-                        .datePickerStyle(GraphicalDatePickerStyle())
+                        CustomDatePicker(
+                            label: "Select a date",
+                            editedDate: $editedDate,
+                            format: "dd/MM/yyyy",
+                            displayedComponents: .date
+                        )
                     }
                 }
 
@@ -131,26 +117,12 @@ struct TaskDetailsScreenView: View {
                     }
                     
                     if hasDeadlineTime {
-                        DatePicker(
-                            "Select a time",
-                            selection: Binding(
-                                get: {
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "hh:mm"
-                                    if let time = dateFormatter.date(from: editedTime) {
-                                        return time
-                                    } else {
-                                        return Date()
-                                    }
-                                },
-                                set: { newTime in
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "hh:mm"
-                                    editedTime = dateFormatter.string(from: newTime)
-                                }
-                            ),
-                            displayedComponents: .hourAndMinute)
-                        .datePickerStyle(GraphicalDatePickerStyle())
+                        CustomDatePicker(
+                            label: "Select a time",
+                            editedDate: $editedTime,
+                            format: "HH:mm",
+                            displayedComponents: .hourAndMinute
+                        )
                     }
                 }
             }.navigationBarTitle(navigationTitle)
@@ -206,6 +178,36 @@ struct TaskDetailsScreenView: View {
     }
 }
 
+struct CustomDatePicker: View {
+    var label: String
+    var editedDate: Binding<String>
+    let format: String
+    let displayedComponents: DatePicker.Components
+    
+    var body: some View {
+        DatePicker(
+            label,
+            selection: Binding(
+                get: {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = format
+                    if let date = dateFormatter.date(from: editedDate.wrappedValue) {
+                        return date
+                    } else {
+                        return Date()
+                    }
+                },
+                set: { newDate in
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = format
+                    editedDate.wrappedValue = dateFormatter.string(from: newDate)
+                }
+            ),
+            in: Date()..., displayedComponents: displayedComponents)
+        .datePickerStyle(.compact)
+    }
+}
+
 struct TaskTypeImage: View {
     let taskType: TaskType
     var selectedTaskType: Binding<TaskType?>
@@ -215,7 +217,7 @@ struct TaskTypeImage: View {
             ZStack {
                 if taskType == selectedTaskType.wrappedValue {
                     RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
-                        .stroke(Color.yellow, lineWidth: 4)
+                        .stroke(Color.yellow, lineWidth: 6)
                         .fill(.tint)
                         .frame(width: 50, height: 50)
                 } else {
