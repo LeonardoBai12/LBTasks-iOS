@@ -10,6 +10,5 @@ import Combine
 
 struct TaskState {
     var tasks: [TaskData] = []
-    var loading: Bool = true
     var errorMessage: String =  ""
 }

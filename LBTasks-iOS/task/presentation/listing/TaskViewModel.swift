@@ -15,7 +15,6 @@ class TaskViewModel: ObservableObject {
     @Published var state = TaskState()
     private var tasks = [TaskData]()
     private var getTasksCancellable: AnyCancellable?
-    private var searchCancellable: AnyCancellable?
     
     var userData: UserData?
     private var recentlyDeletedTask: TaskData?
@@ -24,21 +23,6 @@ class TaskViewModel: ObservableObject {
         self.useCases = useCases
     }
     
-    func onSearchedForTask(filter: String) {
-        searchCancellable?.cancel()
-        searchCancellable = Just(filter)
-            .debounce(for: .milliseconds(300), scheduler: DispatchQueue.main)
-            .sink { [weak self] filter in
-                guard let self = self else { return }
-                self.state.tasks = self.tasks.filter {
-                    $0.title.contains(filter) || (
-                        !($0.description ?? "").isEmpty &&
-                        ($0.description ?? "").contains(filter)
-                    )
-                }
-            }
-        }
-        
     func onRequestDelete(task: TaskData) {
         deleteTask(task)
         recentlyDeletedTask = task
@@ -63,7 +47,6 @@ class TaskViewModel: ObservableObject {
                 }
             }, receiveValue: { [weak self] data in
                 guard let self = self else { return }
-                self.state.loading = false
                 self.state.tasks = data
             })
     }

@@ -591,8 +591,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
-            landmarkName = "TaskScreenView"
-            landmarkType = "14">
+            landmarkName = "onDelete(task:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "DE425ECE-6DD5-43A1-AC25-28AED043005D - 7c8908075975983b"
