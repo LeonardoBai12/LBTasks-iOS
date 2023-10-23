@@ -6,9 +6,9 @@
 //
 
 class SignInRepositoryImpl: SignInRepository {
-    private let googleAuthUiClient: GoogleAuthUiClient
+    private let googleAuthUiClient: AuthClient
 
-    init(googleAuthUiClient: GoogleAuthUiClient) {
+    init(googleAuthUiClient: AuthClient) {
         self.googleAuthUiClient = googleAuthUiClient
     }
 

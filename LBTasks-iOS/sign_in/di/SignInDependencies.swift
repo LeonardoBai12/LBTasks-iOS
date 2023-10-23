@@ -8,7 +8,7 @@
 import Foundation
 
 class SignInDependencies {
-    let googleAuthUiClient = GoogleAuthUiClient()
+    let googleAuthUiClient = AuthClient()
     let signInRepository: SignInRepository
     let signInUseCases: SignInUseCases
 

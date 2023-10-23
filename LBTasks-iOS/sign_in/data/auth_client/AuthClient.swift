@@ -6,8 +6,9 @@
 //
 
 import FirebaseAuth
+import AuthenticationServices
 
-class GoogleAuthUiClient {
+class AuthClient {
     private let auth = Auth.auth()
     
     func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
