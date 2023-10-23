@@ -26,7 +26,7 @@ struct TaskDetailsScreenView: View {
     
     private var isEdit = false
     private var navigationTitle = "New task"
-    private let onDone: () -> Void
+    private let onDone: (TaskData?) -> Void
     
     private var user: UserData
     private var taskData: TaskData?
@@ -35,7 +35,7 @@ struct TaskDetailsScreenView: View {
         viewModel: TaskDetailsViewModel,
         task: TaskData?,
         user: UserData,
-        onDone: @escaping () -> Void
+        onDone: @escaping (TaskData?) -> Void
     ) {
         editedTitle = task?.title ?? ""
         editedDescription = task?.description ?? ""
@@ -150,7 +150,7 @@ struct TaskDetailsScreenView: View {
                             }
                             
                             if viewModel.state.isTaskSaveSuccesful {
-                                onDone()
+                                onDone(taskData)
                             }
                         } label: {
                             Text("Done")

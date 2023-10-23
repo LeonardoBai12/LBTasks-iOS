@@ -91,7 +91,7 @@ struct TaskScreenView: View {
                                 viewModel: taskDetailsViewModel,
                                 task: taskToEdit,
                                 user: viewModel.userData!,
-                                onDone: {
+                                onDone: { task in
                                     showSheet.toggle()
                                     viewModel.getTasks(userData: viewModel.userData!)
                                 }
@@ -123,23 +123,12 @@ struct TaskScreenView: View {
 }
 
 struct TaskRowView: View {
-    private let task: TaskData
-    private let user: UserData
+    let task: TaskData
+    let user: UserData
+    let onEditAction: () -> Void
     
     @State private var showDescription = false
     @State private var icon = "chevron.right"
-    
-    @State private var onEditAction: () -> Void
-    
-    init(
-        task: TaskData,
-        user: UserData,
-        onEditAction: @escaping () -> Void
-    ) {
-        self.task = task
-        self.user = user
-        self.onEditAction = onEditAction
-    }
     
     var body: some View {
         VStack {
