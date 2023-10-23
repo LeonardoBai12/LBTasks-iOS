@@ -26,10 +26,11 @@ struct UserDetailsScreen: View {
             VStack {
                 if (user.profilePictureUrl  ?? "").isEmpty {
                     Text(user.email?.first?.uppercased() ?? "")
+                        .foregroundStyle(.tint)
                         .font(.system(size: 150))
                         .frame(maxWidth: 250, maxHeight: 250)
                         .background(.tertiary)
-                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                        .clipShape(Circle())
                         .padding()
                 } else {
                     AsyncImage(
@@ -38,7 +39,7 @@ struct UserDetailsScreen: View {
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: 400, maxHeight: 250)
-                                .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                                .clipShape(Circle())
                         },
                         placeholder: {
                             ProgressView()
