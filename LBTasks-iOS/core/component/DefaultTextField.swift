@@ -45,6 +45,7 @@ struct DefaultTextField: View {
                             ? "eye.slash"
                             : "eye"
                         ).accentColor(.gray)
+                            .frame(width: 40, height: 60)
                     }.padding(.trailing, 20)
                         .padding(.bottom, 10)
                 }

@@ -21,6 +21,9 @@ struct SignInScreenView: View {
     
     @State private var isNavigationActive = false
     
+    @State private var showLoginSheet = false
+    @State private var showSignInSheet = false
+    
     init(
         viewModel: SignInViewModel,
         taskViewModel: TaskViewModel,
@@ -32,69 +35,61 @@ struct SignInScreenView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        ZStack {
+            GeometryReader { geometry in
+                Image("login_background")
+                    .resizable()
+                    .aspectRatio(geometry.size, contentMode: .fill)
+                    .edgesIgnoringSafeArea(.all)
+                
+            }
+            
+            LinearGradient(
+                gradient: Gradient(
+                    colors: [
+                        Color.black,
+                        Color.clear,
+                        Color.black
+                    ]
+                ),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .edgesIgnoringSafeArea(.all)
+            
             VStack {
-                VStack(alignment: .leading) {
-                    Image(systemName: "note.text")
-                        .resizable()
-                        .frame(width: 20, height: 25)
-                        .foregroundColor(.white)
-                        .opacity(0.9)
-                        .frame(width: 50, height: 50)
-                        .background(.tint)
-                        .cornerRadius(15)
-                    
-                    Text("LB Tasks")
-                        .font(.largeTitle)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }.padding()
+                LBTasksLogo(tint: .white)
                 
                 Spacer()
                 
-                DefaultTextField(
-                    placeholder: "Email",
-                    value: $email,
-                    imageName: "envelope.fill"
-                )
-                DefaultTextField(
-                    placeholder: "Password",
-                    value: $password,
-                    imageName: "lock.fill",
-                    isPassword: true
-                )
-                DefaultTextField(
-                    placeholder: "Repeat password",
-                    value: $repeatedPassword,
-                    imageName: "lock.fill",
-                    isPassword: true
-                )
-                
                 Button {
-                    viewModel.loginWithEmailAndPassword(
-                        email: email,
-                        password: password
-                    )
+                    showLoginSheet.toggle()
                 } label: {
                     Text("Login")
                         .frame(maxWidth: .infinity)
                         .font(.title2)
                         .padding(.vertical, 8)
                 }.buttonStyle(.borderedProminent)
-                    .padding(.bottom)
+                    .padding()
                 
-                Button {
-                    viewModel.signInWithEmailAndPassword(
-                        email: email,
-                        password: password,
-                        repeatedPassword: repeatedPassword
-                    )
-                } label: {
-                    Text("Sign in")
-                        .frame(maxWidth: .infinity)
-                        .font(.title2)
-                        .padding(.vertical, 8)
-                }.buttonStyle(.bordered)
-                    .padding(.bottom)
+                Button(
+                    action: {
+                        showSignInSheet.toggle()
+                    },
+                    label: {
+                        Text("Sign in")
+                            .frame(maxWidth: .infinity)
+                            .font(.title2)
+                            .padding(.vertical, 8)
+                            .foregroundStyle(.black)
+                    }
+                )
+                .buttonStyle(.borderedProminent)
+                .tint(.white)
+                .padding(.bottom, 32)
+                .padding(.horizontal)
+                
             }
             .fullScreenCover(
                 isPresented: $isNavigationActive
@@ -109,13 +104,6 @@ struct SignInScreenView: View {
                 )
             }
         }
-        .padding()
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Something went wrong"),
-                message: Text(errorMessage)
-            )
-        }
         .onReceive(viewModel.$state) { state in
             if state.isSignInSuccessful {
                 showAlert = false
@@ -124,6 +112,123 @@ struct SignInScreenView: View {
                 errorMessage = signInError
                 showAlert = true
             }
+        }
+        .sheet(isPresented: $showLoginSheet) {
+            SignInLoginView(
+                isLogin: true,
+                email: $email,
+                password: $password,
+                repeatedPassword: $repeatedPassword,
+                viewModel: viewModel
+            )
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Something went wrong"),
+                    message: Text(errorMessage)
+                )
+            }
+        }
+        .sheet(isPresented: $showSignInSheet) {
+            SignInLoginView(
+                isLogin: false,
+                email: $email,
+                password: $password,
+                repeatedPassword: $repeatedPassword,
+                viewModel: viewModel
+            )
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Something went wrong"),
+                    message: Text(errorMessage)
+                )
+            }
+        }
+    }
+}
+
+struct LBTasksLogo: View {
+    let tint: Color
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Image(systemName: "note.text")
+                .resizable()
+                .frame(width: 20, height: 25)
+                .foregroundColor(.white)
+                .opacity(0.9)
+                .frame(width: 50, height: 50)
+                .background(.tint)
+                .cornerRadius(15)
+            
+            Text("LB Tasks")
+                .font(.largeTitle)
+                .foregroundStyle(tint)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .bold()
+        }.padding(.all, 32)
+    }
+}
+
+struct SignInLoginView: View {
+    let isLogin: Bool
+    let email: Binding<String>
+    let password: Binding<String>
+    let repeatedPassword: Binding<String>
+    let viewModel: SignInViewModel
+    
+    var body: some View {
+        LBTasksLogo(tint: .primary)
+        
+        DefaultTextField(
+            placeholder: "Email",
+            value: email,
+            imageName: "envelope.fill"
+        )
+        DefaultTextField(
+            placeholder: "Password",
+            value: password,
+            imageName: "lock.fill",
+            isPassword: true
+        )
+        
+        if !isLogin {
+            DefaultTextField(
+                placeholder: "Repeat password",
+                value: repeatedPassword,
+                imageName: "lock.fill",
+                isPassword: true
+            )
+            
+            Button {
+                viewModel.signInWithEmailAndPassword(
+                    email: email.wrappedValue,
+                    password: password.wrappedValue,
+                    repeatedPassword: repeatedPassword.wrappedValue
+                )
+            } label: {
+                Text("Sign in")
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal)
+            }.buttonStyle(.borderedProminent)
+                .padding(.bottom)
+                .padding(.horizontal)
+        } else {
+            Button {
+                viewModel.loginWithEmailAndPassword(
+                    email: email.wrappedValue,
+                    password: password.wrappedValue
+                )
+            } label: {
+                Text("Login")
+                    .frame(maxWidth: .infinity)
+                    .font(.title2)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal)
+            }.buttonStyle(.borderedProminent)
+                .padding(.bottom)
+                .padding(.horizontal)
         }
     }
 }

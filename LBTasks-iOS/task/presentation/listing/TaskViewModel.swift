@@ -34,11 +34,14 @@ class TaskViewModel: ObservableObject {
     }
     
     func getTasks(userData: UserData) {
+        state.isLoading = true
+        
         getTasksCancellable?.cancel()
         getTasksCancellable = useCases.getTasksUseCase.invoke(userData: userData)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
+                    self.state.isLoading = false
                     break
                 case .failure(let error):
                     self.state.errorMessage = error.localizedDescription
