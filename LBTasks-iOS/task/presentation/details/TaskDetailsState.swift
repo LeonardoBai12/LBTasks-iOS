@@ -8,5 +8,6 @@
 import Foundation
 
 struct TaskDetailsState {
-    var task: TaskData?
+    var errorMessage: String?
+    var isTaskSaveSuccesful: Bool = false
 }

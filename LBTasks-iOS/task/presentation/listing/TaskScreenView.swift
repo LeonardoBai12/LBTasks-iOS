@@ -15,7 +15,6 @@ struct TaskScreenView: View {
     private let logout: () -> Void
     
     @State var showSheet = false
-    @State var isEditing = false
     @State private var taskToEdit: TaskData? = nil
     
     var filteredTasks: [TaskData] {
@@ -56,13 +55,11 @@ struct TaskScreenView: View {
                             TaskRowView(
                                 task: task,
                                 user:  viewModel.userData!,
-                                isEditing: $isEditing,
                                 onEditAction: {
+                                    taskDetailsViewModel.state.errorMessage = ""
+                                    taskDetailsViewModel.state.isTaskSaveSuccesful = false
                                     taskToEdit = task
-                                    
-                                    if isEditing {
-                                        showSheet.toggle()
-                                    }
+                                    showSheet.toggle()
                                 }
                             )
                         }.onDelete(perform: { indexSet in
@@ -74,9 +71,7 @@ struct TaskScreenView: View {
                     }
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
-                            EditButton().simultaneousGesture(TapGesture().onEnded({
-                                isEditing.toggle()
-                            }))
+                            EditButton()
                         }
                         ToolbarItem {
                             Button {
@@ -132,53 +127,73 @@ struct TaskRowView: View {
     @State private var showDescription = false
     @State private var icon = "chevron.right"
     
-    @State private var isEditing: Binding<Bool>
     @State private var onEditAction: () -> Void
     
     init(
         task: TaskData,
         user: UserData,
-        isEditing: Binding<Bool>,
         onEditAction: @escaping () -> Void
     ) {
         self.task = task
         self.user = user
-        self.isEditing = isEditing
         self.onEditAction = onEditAction
     }
     
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: task.taskType.getTaskTypeByName()?.getImageName() ?? "")
-                    .foregroundColor(.white)
-                    .opacity(0.9)
-                    .frame(width: 40, height: 40)
-                    .background(.placeholder)
-                    .cornerRadius(8)
-                    .padding(.trailing, 5)
-                    .padding(.vertical, 2)
-                
-                Text(task.title)
-                
-                if !(task.description ?? "").isEmpty {
-                    Spacer()
-                    Image(systemName: icon)
-                }
-            }.onTapGesture {
-                if !(task.description ?? "").isEmpty && !isEditing.wrappedValue {
-                    showDescription.toggle()
-                    
-                    withAnimation(.interactiveSpring) {
-                        if !showDescription {
-                            icon = "chevron.right"
-                        } else {
-                            icon = "chevron.down"
-                        }
+                Button {
+                    onEditAction()
+                } label: {
+                    HStack {
+                        Image(systemName: task.taskType.getTaskTypeByName()?.getImageName() ?? "")
+                            .foregroundColor(.white)
+                            .opacity(0.9)
+                            .frame(width: 40, height: 40)
+                            .background(.placeholder)
+                            .cornerRadius(8)
+                            .padding(.vertical, 2)
+                            .tint(.secondary)
+                        
+                        VStack {
+                            Text(task.title)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .tint(.primary)
+                                .bold()
+                            
+                            HStack {
+                                if !(task.deadlineDate ?? "").isEmpty {
+                                    Text(task.deadlineDate!.replacingOccurrences(of: "-", with: "/"))
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .tint(.primary)
+                                }
+                                if !(task.deadlineTime ?? "").isEmpty {
+                                    Text(task.deadlineTime!)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .tint(.primary)
+                                }
+                            }
+                        }.padding(.leading, 5)
                     }
                 }
                 
-                onEditAction()
+                if !(task.description ?? "").isEmpty {
+                    Image(systemName: icon)
+                        .frame(width: 20)
+                        .onTapGesture {
+                            if !(task.description ?? "").isEmpty {
+                                showDescription.toggle()
+                                
+                                withAnimation(.interactiveSpring) {
+                                    if !showDescription {
+                                        icon = "chevron.right"
+                                    } else {
+                                        icon = "chevron.down"
+                                    }
+                                }
+                            }
+                        }
+                }
             }
             
             if showDescription {

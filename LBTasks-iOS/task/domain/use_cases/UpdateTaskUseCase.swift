@@ -36,6 +36,6 @@ class UpdateTaskUseCase {
             deadlineTime: deadlineTime
         )
         
-        try repository.insertTask(userData: userData, task: updatedTask)
+        repository.insertTask(userData: userData, task: updatedTask)
     }
 }
