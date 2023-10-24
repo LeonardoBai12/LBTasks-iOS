@@ -159,9 +159,9 @@ struct TaskRowView: View {
                             HStack {
                                 if !(task.deadlineDate ?? "").isEmpty {
                                     Text(task.deadlineDate!.replacingOccurrences(of: "-", with: "/"))
-                                        .frame(maxWidth: .infinity, alignment: .leading)
                                         .tint(.primary)
                                 }
+                                                                
                                 if !(task.deadlineTime ?? "").isEmpty {
                                     Text(task.deadlineTime!)
                                         .frame(maxWidth: .infinity, alignment: .leading)
