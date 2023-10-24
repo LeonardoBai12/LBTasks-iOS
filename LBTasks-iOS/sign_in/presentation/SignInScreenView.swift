@@ -158,26 +158,37 @@ struct SignInLoginView: View {
                 
                 Spacer()
                 
-                DefaultTextField(
-                    placeholder: "Email",
-                    value: $email,
-                    imageName: "envelope.fill"
-                )
-                DefaultTextField(
-                    placeholder: "Password",
-                    value: $password,
-                    imageName: "lock.fill",
-                    isPassword: true
-                )
+                Form {
+                    Section {
+                        DefaultTextField(
+                            placeholder: "Email",
+                            value: $email,
+                            imageName: "envelope.fill"
+                        )
+                    }
+                    
+                    Section {
+                        DefaultTextField(
+                            placeholder: "Password",
+                            value: $password,
+                            imageName: "lock.fill",
+                            isPassword: true
+                        )
+                    }
+                    
+                    if !isLogin {
+                        Section {
+                            DefaultTextField(
+                                placeholder: "Repeat password",
+                                value: $repeatedPassword,
+                                imageName: "lock.fill",
+                                isPassword: true
+                            )
+                        }
+                    }
+                }
                 
                 if !isLogin {
-                    DefaultTextField(
-                        placeholder: "Repeat password",
-                        value: $repeatedPassword,
-                        imageName: "lock.fill",
-                        isPassword: true
-                    )
-                    
                     Spacer()
                     
                     Button {

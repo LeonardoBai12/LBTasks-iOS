@@ -45,9 +45,7 @@ struct DefaultTextField: View {
                             ? "eye.slash"
                             : "eye"
                         ).accentColor(.gray)
-                            .frame(width: 40, height: 60)
-                    }.padding(.trailing, 20)
-                        .padding(.bottom, 10)
+                    }
                 }
             } else {
                 textField
@@ -73,9 +71,6 @@ struct CustomTextField: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
         }
-        .padding(.bottom, 10)
-        .overlay(Rectangle().frame(height: 1).padding(.top, 25).foregroundColor(.black))
-        .padding()
     }
 }
 
@@ -94,9 +89,6 @@ struct CustomSecureTextField: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
         }
-        .padding(.bottom, 10)
-        .overlay(Rectangle().frame(height: 1).padding(.top, 25).foregroundColor(.black))
-        .padding()
     }
 }
 
