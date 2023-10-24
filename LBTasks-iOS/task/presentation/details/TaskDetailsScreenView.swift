@@ -23,7 +23,7 @@ struct TaskDetailsScreenView: View {
     
     @State private var showAlert = false
     @State private var errorMessage = "Unknown error"
-    
+        
     private var isEdit = false
     private var navigationTitle = "New task"
     private let onDone: (TaskData?) -> Void
@@ -94,9 +94,20 @@ struct TaskDetailsScreenView: View {
                         .submitLabel(.done)
                 }
                 Section {
-                    TextField("Description", text: $editedDescription, axis: .vertical)
-                        .submitLabel(.done)
-                        .lineLimit(10)
+                    ZStack(alignment: .topLeading) {
+                        if editedDescription.isEmpty {
+                            Text("Description")
+                                .font(.callout)
+                                .foregroundColor(.gray)
+                                .opacity(0.6)
+                                .padding(.top, 10)
+                                .padding(.leading, 2)
+                        }
+                        
+                        TextEditor(text: $editedDescription)
+                            .submitLabel(.done)
+                            .frame(height: 100)
+                    }
                 }
                 Section {
                     HStack {
