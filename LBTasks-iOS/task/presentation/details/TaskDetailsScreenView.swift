@@ -91,9 +91,11 @@ struct TaskDetailsScreenView: View {
                 
                 Section {
                     TextField("Title", text: $editedTitle)
+                        .submitLabel(.done)
                 }
                 Section {
                     TextField("Description", text: $editedDescription, axis: .vertical)
+                        .submitLabel(.done)
                         .lineLimit(10)
                 }
                 Section {
