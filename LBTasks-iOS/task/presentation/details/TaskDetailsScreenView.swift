@@ -93,7 +93,8 @@ struct TaskDetailsScreenView: View {
                     TextField("Title", text: $editedTitle)
                 }
                 Section {
-                    TextField("Description", text: $editedDescription)
+                    TextField("Description", text: $editedDescription, axis: .vertical)
+                        .lineLimit(10)
                 }
                 Section {
                     HStack {

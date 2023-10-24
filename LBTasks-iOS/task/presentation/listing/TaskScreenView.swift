@@ -179,7 +179,7 @@ struct TaskRowView: View {
                             if !(task.description ?? "").isEmpty {
                                 showDescription.toggle()
                                 
-                                withAnimation(.interactiveSpring) {
+                                withAnimation(.smooth) {
                                     if !showDescription {
                                         icon = "chevron.right"
                                     } else {
