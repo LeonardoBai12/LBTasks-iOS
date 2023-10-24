@@ -47,7 +47,8 @@ struct SignInScreenView: View {
                 .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    LBTasksLogo(tint: .white)
+                    LBTasksLogo(tint: .white, font: .largeTitle)
+                        .padding(.all, 32)
                     
                     Spacer()
                     
@@ -88,6 +89,7 @@ struct SignInScreenView: View {
 
 struct LBTasksLogo: View {
     let tint: Color
+    let font: Font
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -101,11 +103,11 @@ struct LBTasksLogo: View {
                 .cornerRadius(15)
             
             Text("LB Tasks")
-                .font(.largeTitle)
+                .font(font)
                 .foregroundStyle(tint)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .bold()
-        }.padding(.all, 32)
+        }
     }
 }
 
@@ -128,7 +130,7 @@ struct SignInButtonView: View {
     var body: some View {
         Text(label)
             .frame(maxWidth: .infinity, maxHeight: 60)
-            .background(.white)
+            .background(.background)
             .foregroundColor(.accentColor)
             .cornerRadius(12)
             .padding(.horizontal)
@@ -154,11 +156,12 @@ struct SignInLoginView: View {
     var body: some View {
         NavigationView {
             VStack {
-                LBTasksLogo(tint: .primary)
-                
-                Spacer()
-                
                 Form {
+                    Section {
+                        LBTasksLogo(tint: .primary, font: .title)
+                            .padding(.all, 4)
+                    }
+                    
                     Section {
                         DefaultTextField(
                             placeholder: "Email",
@@ -188,42 +191,27 @@ struct SignInLoginView: View {
                     }
                 }
                 
-                if !isLogin {
-                    Spacer()
-                    
-                    Button {
+                Spacer()
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    if !isLogin {
                         viewModel.signInWithEmailAndPassword(
                             email: email,
                             password: password,
                             repeatedPassword: repeatedPassword
                         )
-                    } label: {
-                        Text("Sign in")
-                            .frame(maxWidth: .infinity)
-                            .font(.title2)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal)
-                    }.buttonStyle(.borderedProminent)
-                        .padding(.horizontal)
-                } else {
-                    Spacer()
-                    
-                    Button {
+                    } else {
                         viewModel.loginWithEmailAndPassword(
                             email: email,
                             password: password
                         )
-                    } label: {
-                        Text("Login")
-                            .frame(maxWidth: .infinity)
-                            .font(.title2)
-                            .padding(.vertical, 8)
-                            .padding(.horizontal)
-                    }.buttonStyle(.borderedProminent)
-                        .padding(.horizontal)
+                    }
+                } label: {
+                    Text("Done")
                 }
-                
-                Spacer()
             }
         }
         .onAppear {

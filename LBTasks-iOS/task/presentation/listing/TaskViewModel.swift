@@ -34,7 +34,7 @@ class TaskViewModel: ObservableObject {
     }
     
     func getTasks(userData: UserData) {
-        state.isLoading = true
+        state.isLoading = state.tasks.isEmpty
         
         getTasksCancellable?.cancel()
         getTasksCancellable = useCases.getTasksUseCase.invoke(userData: userData)

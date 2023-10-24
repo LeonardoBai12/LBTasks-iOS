@@ -18,7 +18,6 @@ struct DefaultTextField: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            
             let textField = CustomTextField(
                 text: value,
                 placeholder: placeholder,
@@ -50,8 +49,6 @@ struct DefaultTextField: View {
             } else {
                 textField
             }
-            
-            
         }
     }
 }
