@@ -16,7 +16,7 @@
 		8641D4CA2AE1F0F700F89E89 /* SignInResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4C92AE1F0F700F89E89 /* SignInResult.swift */; };
 		8641D4CD2AE1F10600F89E89 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4CC2AE1F10600F89E89 /* UserData.swift */; };
 		8641D4D02AE1F21D00F89E89 /* SignInRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4CF2AE1F21D00F89E89 /* SignInRepositoryImpl.swift */; };
-		8641D4D32AE1F29C00F89E89 /* GoogleAuthUiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4D22AE1F29C00F89E89 /* GoogleAuthUiClient.swift */; };
+		8641D4D32AE1F29C00F89E89 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D4D22AE1F29C00F89E89 /* AuthClient.swift */; };
 		8641D4D52AE1F59D00F89E89 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8641D4D42AE1F59D00F89E89 /* FirebaseAuth */; };
 		8641D4D72AE1F59D00F89E89 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8641D4D62AE1F59D00F89E89 /* FirebaseCrashlytics */; };
 		8641D4D92AE1F59D00F89E89 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8641D4D82AE1F59D00F89E89 /* FirebaseDatabase */; };
@@ -48,6 +48,8 @@
 		8641D51A2AE34BAC00F89E89 /* TaskDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */; };
 		8641D51C2AE3504200F89E89 /* TaskState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D51B2AE3504200F89E89 /* TaskState.swift */; };
 		8641D51E2AE37AD700F89E89 /* TaskDetailsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */; };
+		86642BB12AE615BF00CF0598 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86642BB02AE615BF00CF0598 /* DateExtensions.swift */; };
+		8666F91F2AE4040200A4FD80 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */; };
 		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
 		867175242ADC826100A769C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175232ADC826100A769C7 /* Preview Assets.xcassets */; };
@@ -55,6 +57,7 @@
 		867175332ADC826100A769C7 /* LBTasks_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */; };
 		8671753D2ADC826100A769C7 /* LBTasks_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */; };
 		8671753F2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */; };
+		86BA61DF2AE47D0100C10184 /* UserDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA61DE2AE47D0100C10184 /* UserDetailsScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +83,7 @@
 		8641D4C92AE1F0F700F89E89 /* SignInResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResult.swift; sourceTree = "<group>"; };
 		8641D4CC2AE1F10600F89E89 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		8641D4CF2AE1F21D00F89E89 /* SignInRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepositoryImpl.swift; sourceTree = "<group>"; };
-		8641D4D22AE1F29C00F89E89 /* GoogleAuthUiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAuthUiClient.swift; sourceTree = "<group>"; };
+		8641D4D22AE1F29C00F89E89 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		8641D4DE2AE1F88E00F89E89 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		8641D4E02AE1F8AF00F89E89 /* GetSignedInUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSignedInUserUseCase.swift; sourceTree = "<group>"; };
 		8641D4E22AE1F8DA00F89E89 /* LoginWIthEmailAndPasswordUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWIthEmailAndPasswordUseCase.swift; sourceTree = "<group>"; };
@@ -108,6 +111,8 @@
 		8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewModel.swift; sourceTree = "<group>"; };
 		8641D51B2AE3504200F89E89 /* TaskState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskState.swift; sourceTree = "<group>"; };
 		8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsState.swift; sourceTree = "<group>"; };
+		86642BB02AE615BF00CF0598 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
 		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
 		867175202ADC826100A769C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,6 +123,7 @@
 		867175382ADC826100A769C7 /* LBTasks-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBTasks-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSUITests.swift; sourceTree = "<group>"; };
 		8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		86BA61DE2AE47D0100C10184 /* UserDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		860492392AE4BB0A004E30C8 /* listing */ = {
+			isa = PBXGroup;
+			children = (
+				8641D5172AE34B9F00F89E89 /* TaskViewModel.swift */,
+				8641D50F2AE219CF00F89E89 /* TaskScreenView.swift */,
+				8641D51B2AE3504200F89E89 /* TaskState.swift */,
+			);
+			path = listing;
+			sourceTree = "<group>";
+		};
+		8604923A2AE4BB11004E30C8 /* details */ = {
+			isa = PBXGroup;
+			children = (
+				8641D5132AE219EF00F89E89 /* TaskDetailsScreenView.swift */,
+				8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */,
+				8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */,
+			);
+			path = details;
+			sourceTree = "<group>";
+		};
 		8641D4C52AE1F0C400F89E89 /* repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +207,7 @@
 		8641D4D12AE1F24900F89E89 /* auth_client */ = {
 			isa = PBXGroup;
 			children = (
-				8641D4D22AE1F29C00F89E89 /* GoogleAuthUiClient.swift */,
+				8641D4D22AE1F29C00F89E89 /* AuthClient.swift */,
 			);
 			path = auth_client;
 			sourceTree = "<group>";
@@ -202,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				8641D4DE2AE1F88E00F89E89 /* StringExtensions.swift */,
+				86642BB02AE615BF00CF0598 /* DateExtensions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -267,6 +294,14 @@
 			path = di;
 			sourceTree = "<group>";
 		};
+		8666F91D2AE403C300A4FD80 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
 		867175102ADC826000A769C7 = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +365,7 @@
 		86F037BB2ADCA7EC000B69FE /* core */ = {
 			isa = PBXGroup;
 			children = (
+				8666F91D2AE403C300A4FD80 /* component */,
 				8641D4DD2AE1F88100F89E89 /* util */,
 			);
 			path = core;
@@ -363,6 +399,7 @@
 				8641D4EC2AE1F9B600F89E89 /* SignInViewModel.swift */,
 				8641D4EE2AE1FA7D00F89E89 /* SignInState.swift */,
 				8641D4EA2AE1F99A00F89E89 /* SignInScreenView.swift */,
+				86BA61DE2AE47D0100C10184 /* UserDetailsScreen.swift */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -408,12 +445,8 @@
 		86F037C42ADCA8EF000B69FE /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				8641D50F2AE219CF00F89E89 /* TaskScreenView.swift */,
-				8641D5132AE219EF00F89E89 /* TaskDetailsScreenView.swift */,
-				8641D5172AE34B9F00F89E89 /* TaskViewModel.swift */,
-				8641D5192AE34BAC00F89E89 /* TaskDetailsViewModel.swift */,
-				8641D51B2AE3504200F89E89 /* TaskState.swift */,
-				8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */,
+				8604923A2AE4BB11004E30C8 /* details */,
+				860492392AE4BB0A004E30C8 /* listing */,
 			);
 			path = presentation;
 			sourceTree = "<group>";
@@ -562,7 +595,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8641D4D32AE1F29C00F89E89 /* GoogleAuthUiClient.swift in Sources */,
+				8641D4D32AE1F29C00F89E89 /* AuthClient.swift in Sources */,
 				8641D4DF2AE1F88E00F89E89 /* StringExtensions.swift in Sources */,
 				8641D4EF2AE1FA7D00F89E89 /* SignInState.swift in Sources */,
 				8641D50E2AE219B900F89E89 /* TaskDependencies.swift in Sources */,
@@ -571,6 +604,7 @@
 				8641D4CD2AE1F10600F89E89 /* UserData.swift in Sources */,
 				8641D4E32AE1F8DA00F89E89 /* LoginWIthEmailAndPasswordUseCase.swift in Sources */,
 				8641D4FA2AE2169000F89E89 /* RealtimeDatabaseClient.swift in Sources */,
+				86642BB12AE615BF00CF0598 /* DateExtensions.swift in Sources */,
 				867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */,
 				8641D5102AE219CF00F89E89 /* TaskScreenView.swift in Sources */,
 				8641D4E52AE1F90400F89E89 /* LogoutUseCase.swift in Sources */,
@@ -582,6 +616,7 @@
 				8641D51E2AE37AD700F89E89 /* TaskDetailsState.swift in Sources */,
 				8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */,
 				8641D5182AE34B9F00F89E89 /* TaskViewModel.swift in Sources */,
+				86BA61DF2AE47D0100C10184 /* UserDetailsScreen.swift in Sources */,
 				8641D50A2AE2174D00F89E89 /* TaskUseCases.swift in Sources */,
 				8641D5142AE219EF00F89E89 /* TaskDetailsScreenView.swift in Sources */,
 				8641D4CA2AE1F0F700F89E89 /* SignInResult.swift in Sources */,
@@ -592,6 +627,7 @@
 				8641D5062AE2172A00F89E89 /* GetTasksUseCase.swift in Sources */,
 				8641D51A2AE34BAC00F89E89 /* TaskDetailsViewModel.swift in Sources */,
 				8641D5082AE2173700F89E89 /* InsertTaskUseCase.swift in Sources */,
+				8666F91F2AE4040200A4FD80 /* DefaultTextField.swift in Sources */,
 				8641D4C72AE1F0D300F89E89 /* SignInRepository.swift in Sources */,
 				8641D4D02AE1F21D00F89E89 /* SignInRepositoryImpl.swift in Sources */,
 				8641D5002AE216F800F89E89 /* TaskData.swift in Sources */,

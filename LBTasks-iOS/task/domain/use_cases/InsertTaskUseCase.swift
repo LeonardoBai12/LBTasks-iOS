@@ -26,7 +26,11 @@ class InsertTaskUseCase {
             throw NSError(domain: "lb.io", code: 1, userInfo: [NSLocalizedDescriptionKey: "You can't save without a title"])
         }
         
-        try repository.insertTask(
+        if taskType.isEmpty {
+            throw NSError(domain: "lb.io", code: 1, userInfo: [NSLocalizedDescriptionKey: "You can't save without a task type"])
+        }
+        
+        repository.insertTask(
             userData: userData,
             task: TaskData(
                 title: title,

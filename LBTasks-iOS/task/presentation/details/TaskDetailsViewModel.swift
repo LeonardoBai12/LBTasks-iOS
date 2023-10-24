@@ -13,32 +13,47 @@ class TaskDetailsViewModel: ObservableObject {
     private let useCases: TaskUseCases
     @Published var state = TaskDetailsState()
     
-    var userData: UserData?
-    
-    init(useCases: TaskUseCases, user: UserData) {
+    init(useCases: TaskUseCases) {
         self.useCases = useCases
-        self.userData = user
     }
     
-    func onRequestInsert(title: String, description: String, date: String, time: String) {
-        guard let userData = userData, let task = state.task else { return }
+    func onRequestInsert(
+        userData: UserData,
+        title: String,
+        description: String,
+        taskType: String,
+        date: String,
+        time: String
+    ) {
+        state.errorMessage = ""
+        state.isTaskSaveSuccesful = false
         
         do {
             try useCases.insertTaskUseCase.invoke(
                 userData: userData,
                 title: title,
                 description: description,
-                taskType: task.taskType,
+                taskType: taskType,
                 deadlineDate: date,
                 deadlineTime: time
             )
-        } catch {
-
+            state.isTaskSaveSuccesful = true
+            state.errorMessage = ""
+        } catch let errorMessage as NSError {
+            state.errorMessage = errorMessage.localizedDescription
         }
     }
     
-    func onRequestUpdate(title: String, description: String, date: String, time: String) {
-        guard let userData = userData, let task = state.task else { return }
+    func onRequestUpdate(
+        userData: UserData,
+        task: TaskData,
+        title: String,
+        description: String,
+        date: String,
+        time: String
+    ) {
+        state.errorMessage = ""
+        state.isTaskSaveSuccesful = false
         
         do {
             try useCases.updateTaskUseCase.invoke(
@@ -50,8 +65,9 @@ class TaskDetailsViewModel: ObservableObject {
                 deadlineDate: date,
                 deadlineTime: time
             )
-        } catch {
-                
+            state.isTaskSaveSuccesful = true
+        } catch let errorMessage as NSError {
+            state.errorMessage = errorMessage.localizedDescription
         }
     }
 }

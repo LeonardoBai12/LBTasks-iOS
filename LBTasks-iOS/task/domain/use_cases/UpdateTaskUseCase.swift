@@ -28,7 +28,7 @@ class UpdateTaskUseCase {
         }
         
         let updatedTask = TaskData(
-            uuid: originalTask.uuid,
+            id: originalTask.id,
             title: title,
             description: description,
             taskType: taskType,
@@ -36,6 +36,6 @@ class UpdateTaskUseCase {
             deadlineTime: deadlineTime
         )
         
-        try repository.insertTask(userData: userData, task: updatedTask)
+        repository.insertTask(userData: userData, task: updatedTask)
     }
 }

@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct TaskData {
-    let uuid: String
+struct TaskData: Identifiable {
+    let id: String
     var title: String
     var description: String?
     let taskType: String
@@ -16,14 +16,14 @@ struct TaskData {
     var deadlineTime: String?
     
     init(
-        uuid: String = UUID().uuidString,
+        id: String = UUID().uuidString,
         title: String,
         description: String? = nil,
         taskType: String,
         deadlineDate: String? = nil,
         deadlineTime: String? = nil
     ) {
-        self.uuid = uuid
+        self.id = id
         self.title = title
         self.description = description
         self.taskType = taskType
@@ -33,7 +33,7 @@ struct TaskData {
     
     static func fromSnapshot(dictionary: [String: String]) -> TaskData {
         return TaskData(
-            uuid: dictionary["uuid"] ?? "",
+            id: dictionary["uuid"] ?? "",
             title: dictionary["title"] ?? "",
             description: dictionary["description"],
             taskType: dictionary["taskType"] ?? "",
@@ -46,7 +46,7 @@ struct TaskData {
 extension TaskData {
     func toDictionary() -> [String: Any] {
         var dictionary: [String: Any] = [
-            "uuid": uuid,
+            "uuid": id,
             "title": title,
             "taskType": taskType
         ]
