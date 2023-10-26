@@ -11,7 +11,7 @@ import FirebaseCore
 
 class RealtimeDatabaseClient {
     private var database: DatabaseReference = Database.database().reference().child("task")
-    
+
     func insertTask(user: UserData, task: TaskData) {
         guard let userId = user.userId else {
             return
@@ -19,7 +19,7 @@ class RealtimeDatabaseClient {
         let taskReference = database.child(userId).child(task.id)
         taskReference.setValue(task.toDictionary())
     }
-    
+
     func deleteTask(user: UserData, task: TaskData) {
         guard let userId = user.userId else {
             return
@@ -27,14 +27,14 @@ class RealtimeDatabaseClient {
         let taskReference = database.child(userId).child(task.id)
         taskReference.removeValue()
     }
-    
+
     func getTasksFromUser(user: UserData, completion: @escaping ([TaskData]) -> Void) {
         guard let userId = user.userId else {
             completion([])
             return
         }
-        
-        database.child(userId).observeSingleEvent(of: .value) { snapshot, error in
+
+        database.child(userId).observeSingleEvent(of: .value) { snapshot, _ in
             var tasks: [TaskData] = []
             for case let child as DataSnapshot in snapshot.children {
                 if let value = child.value as? [String: String] {
@@ -42,7 +42,7 @@ class RealtimeDatabaseClient {
                     tasks.append(task)
                 }
             }
-            
+
             let sortedTasks = tasks.sorted {
                 if $0.deadlineDate != $1.deadlineDate {
                     return $0.deadlineDate ?? "" < $1.deadlineDate ?? ""
@@ -52,7 +52,7 @@ class RealtimeDatabaseClient {
                     return $0.title < $1.title
                 }
             }
-            
+
             completion(sortedTasks)
         }
     }

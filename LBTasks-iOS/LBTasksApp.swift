@@ -12,7 +12,7 @@ import FirebaseAuth
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
         _ application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         FirebaseApp.configure()
         return true
@@ -20,16 +20,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct LBTasks_iOSApp: App {
+struct LBTasksApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     var body: some Scene {
         let signInViewModel = SignInDependencies().makeSignInViewModel()
         let taskDependencies = TaskDependencies()
         let taskViewModel = taskDependencies.makeTaskViewModel()
         let user = signInViewModel.getSignedInUser()
         let taskDetailsViewModel = taskDependencies.makeTaskDetailsViewModel()
-        
+
         let taskScreen = TaskScreenView(
             viewModel: taskViewModel,
             taskDetailsViewModel: taskDetailsViewModel,
@@ -38,13 +38,13 @@ struct LBTasks_iOSApp: App {
                 signInViewModel.logout()
             }
         )
-        
+
         let signInScreen = SignInScreenView(
             viewModel: signInViewModel,
             taskViewModel: taskViewModel,
             taskDetailsViewModel: taskDetailsViewModel
         )
-        
+
         WindowGroup {
             NavigationView {
                 if user != nil {

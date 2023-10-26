@@ -14,7 +14,7 @@ struct TaskData: Identifiable {
     let taskType: String
     var deadlineDate: String?
     var deadlineTime: String?
-    
+
     init(
         id: String = UUID().uuidString,
         title: String,
@@ -30,7 +30,7 @@ struct TaskData: Identifiable {
         self.deadlineDate = deadlineDate
         self.deadlineTime = deadlineTime
     }
-    
+
     static func fromSnapshot(dictionary: [String: String]) -> TaskData {
         return TaskData(
             id: dictionary["uuid"] ?? "",
@@ -50,19 +50,19 @@ extension TaskData {
             "title": title,
             "taskType": taskType
         ]
-        
+
         if let description = description {
             dictionary["description"] = description
         }
-        
+
         if let deadlineDate = deadlineDate {
             dictionary["deadlineDate"] = deadlineDate
         }
-        
+
         if let deadlineTime = deadlineTime {
             dictionary["deadlineTime"] = deadlineTime
         }
-        
+
         return dictionary
     }
 }

@@ -11,7 +11,7 @@ struct SignInScreenView: View {
     @ObservedObject var viewModel: SignInViewModel
     @ObservedObject var taskViewModel: TaskViewModel
     @ObservedObject var taskDetailsViewModel: TaskDetailsViewModel
-    
+
     init(
         viewModel: SignInViewModel,
         taskViewModel: TaskViewModel,
@@ -21,7 +21,7 @@ struct SignInScreenView: View {
         self.taskViewModel = taskViewModel
         self.taskDetailsViewModel = taskDetailsViewModel
     }
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -31,7 +31,7 @@ struct SignInScreenView: View {
                         .aspectRatio(geometry.size, contentMode: .fill)
                         .edgesIgnoringSafeArea(.all)
                 }
-                
+
                 LinearGradient(
                     gradient: Gradient(
                         colors: [
@@ -45,13 +45,13 @@ struct SignInScreenView: View {
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     LBTasksLogo(tint: .white, font: .largeTitle)
                         .padding(.all, 32)
-                    
+
                     Spacer()
-                    
+
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
@@ -66,7 +66,7 @@ struct SignInScreenView: View {
                                 .padding(.vertical, 8)
                         }
                     )
-                    
+
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
@@ -90,7 +90,7 @@ struct SignInScreenView: View {
 struct LBTasksLogo: View {
     let tint: Color
     let font: Font
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Image(systemName: "note.text")
@@ -101,7 +101,7 @@ struct LBTasksLogo: View {
                 .frame(width: 50, height: 50)
                 .background(.tint)
                 .cornerRadius(15)
-            
+
             Text("LB Tasks")
                 .font(font)
                 .foregroundStyle(tint)
@@ -113,7 +113,7 @@ struct LBTasksLogo: View {
 
 struct LoginButtonView: View {
     let label: String
-    
+
     var body: some View {
         Text(label)
             .frame(maxWidth: .infinity, maxHeight: 60)
@@ -126,7 +126,7 @@ struct LoginButtonView: View {
 
 struct SignInButtonView: View {
     let label: String
-    
+
     var body: some View {
         Text(label)
             .frame(maxWidth: .infinity, maxHeight: 60)
@@ -141,18 +141,18 @@ struct SignInLoginView: View {
     var viewModel: SignInViewModel
     var taskViewModel: TaskViewModel
     var taskDetailsViewModel: TaskDetailsViewModel
-    
+
     let isLogin: Bool
-    
+
     @State private var email = ""
     @State private var password = ""
     @State private var repeatedPassword = ""
-    
+
     @State private var showAlert = false
     @State private var errorMessage = "Unknown error"
-    
+
     @State private var isNavigationActive = false
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -161,7 +161,7 @@ struct SignInLoginView: View {
                         LBTasksLogo(tint: .primary, font: .title)
                             .padding(.all, 4)
                     }
-                    
+
                     Section {
                         DefaultTextField(
                             placeholder: "Email",
@@ -169,7 +169,7 @@ struct SignInLoginView: View {
                             imageName: "envelope.fill"
                         )
                     }
-                    
+
                     Section {
                         DefaultTextField(
                             placeholder: "Password",
@@ -178,7 +178,7 @@ struct SignInLoginView: View {
                             isPassword: true
                         )
                     }
-                    
+
                     if !isLogin {
                         Section {
                             DefaultTextField(
@@ -190,7 +190,7 @@ struct SignInLoginView: View {
                         }
                     }
                 }
-                
+
                 Spacer()
             }
         }
@@ -256,7 +256,7 @@ struct SignInScreenView_Previews: PreviewProvider {
         let taskViewModel = TaskDependencies().makeTaskViewModel()
         let signInViewModel = SignInDependencies().makeSignInViewModel()
         let taskDetailsViewModel = TaskDependencies().makeTaskDetailsViewModel()
-        
+
         return SignInScreenView(
             viewModel: signInViewModel,
             taskViewModel: taskViewModel,

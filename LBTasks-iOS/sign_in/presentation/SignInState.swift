@@ -9,5 +9,5 @@ import Foundation
 
 struct SignInState {
     var isSignInSuccessful: Bool = false
-    var signInError: String? = nil
+    var signInError: String?
 }

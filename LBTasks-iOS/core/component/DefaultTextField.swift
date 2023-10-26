@@ -15,7 +15,7 @@ struct DefaultTextField: View {
     @State private var hidePassword = false
     var isPassword = false
     @State private var isSecured: Bool = true
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             let textField = CustomTextField(
@@ -23,7 +23,7 @@ struct DefaultTextField: View {
                 placeholder: placeholder,
                 imageName: imageName
             )
-            
+
             if isPassword {
                 ZStack(alignment: .trailing) {
                     if isSecured {
@@ -35,7 +35,7 @@ struct DefaultTextField: View {
                     } else {
                         textField
                     }
-                    
+
                     Button(action: {
                         isSecured.toggle()
                     }) {
@@ -92,7 +92,7 @@ struct CustomSecureTextField: View {
 struct DefaultTextField_Previews: PreviewProvider {
     static var previews: some View {
         @State var editingText: String = ""
-        
+
         return DefaultTextField(
             placeholder: "This is a hint",
             value: $editingText,
