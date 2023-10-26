@@ -305,9 +305,9 @@
 		867175102ADC826000A769C7 = {
 			isa = PBXGroup;
 			children = (
-				8671751B2ADC826000A769C7 /* LBTasks-iOS */,
-				867175312ADC826100A769C7 /* LBTasks-iOSTests */,
-				8671753B2ADC826100A769C7 /* LBTasks-iOSUITests */,
+				8671751B2ADC826000A769C7 /* LBTasksiOS */,
+				867175312ADC826100A769C7 /* LBTasksiOSTests */,
+				8671753B2ADC826100A769C7 /* LBTasksiOSUITests */,
 				8671751A2ADC826000A769C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8671751B2ADC826000A769C7 /* LBTasks-iOS */ = {
+		8671751B2ADC826000A769C7 /* LBTasksiOS */ = {
 			isa = PBXGroup;
 			children = (
 				8641D4BA2AE1DFA000F89E89 /* GoogleService-Info.plist */,
@@ -334,7 +334,7 @@
 				867175272ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld */,
 				867175222ADC826100A769C7 /* Preview Content */,
 			);
-			path = "LBTasks-iOS";
+			path = LBTasksiOS;
 			sourceTree = "<group>";
 		};
 		867175222ADC826100A769C7 /* Preview Content */ = {
@@ -345,21 +345,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		867175312ADC826100A769C7 /* LBTasks-iOSTests */ = {
+		867175312ADC826100A769C7 /* LBTasksiOSTests */ = {
 			isa = PBXGroup;
 			children = (
 				867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */,
 			);
-			path = "LBTasks-iOSTests";
+			path = LBTasksiOSTests;
 			sourceTree = "<group>";
 		};
-		8671753B2ADC826100A769C7 /* LBTasks-iOSUITests */ = {
+		8671753B2ADC826100A769C7 /* LBTasksiOSUITests */ = {
 			isa = PBXGroup;
 			children = (
 				8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */,
 				8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */,
 			);
-			path = "LBTasks-iOSUITests";
+			path = LBTasksiOSUITests;
 			sourceTree = "<group>";
 		};
 		86F037BB2ADCA7EC000B69FE /* core */ = {
