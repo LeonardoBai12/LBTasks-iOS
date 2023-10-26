@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Setup SwiftLint Configuration
         run: |
-          echo "disabled_rules: [function_parameter_count, multiple_closures_with_trailing_closure]" > .code_formatting.yml
+          echo "disabled_rules: [function_parameter_count]" > .code_formatting.yml
       - name: GitHub Action for SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
       - name: GitHub Action for SwiftLint with --strict
