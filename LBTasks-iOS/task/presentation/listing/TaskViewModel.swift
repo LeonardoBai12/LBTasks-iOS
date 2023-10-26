@@ -11,31 +11,31 @@ import SwiftUI
 
 class TaskViewModel: ObservableObject {
     private let useCases: TaskUseCases
-    
+
     @Published var state = TaskState()
     private var getTasksCancellable: AnyCancellable?
-    
+
     var userData: UserData?
     private var recentlyDeletedTask: TaskData?
-    
+
     init(useCases: TaskUseCases) {
         self.useCases = useCases
     }
-    
+
     func onRequestDelete(task: TaskData) {
         deleteTask(task)
         recentlyDeletedTask = task
     }
-    
+
     func onRestoreTask() {
         if let task = recentlyDeletedTask {
             restoreTask(task)
         }
     }
-    
+
     func getTasks(userData: UserData) {
         state.isLoading = state.tasks.isEmpty
-        
+
         getTasksCancellable?.cancel()
         getTasksCancellable = useCases.getTasksUseCase.invoke(userData: userData)
             .sink(receiveCompletion: { completion in
@@ -52,7 +52,7 @@ class TaskViewModel: ObservableObject {
                 self.state.tasks = data
             })
     }
-    
+
     private func restoreTask(_ task: TaskData) {
         guard let userData = userData else { return }
         do {
@@ -69,13 +69,13 @@ class TaskViewModel: ObservableObject {
         }
         getTasks(userData: userData)
     }
-    
+
     private func deleteTask(_ task: TaskData) {
         guard let userData = userData else { return }
         useCases.deleteTaskUseCase.invoke(userData: userData, task: task)
         getTasks(userData: userData)
     }
-    
+
     func clear() {
         state = TaskState()
     }

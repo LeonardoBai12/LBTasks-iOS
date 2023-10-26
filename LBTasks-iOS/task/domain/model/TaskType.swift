@@ -19,8 +19,8 @@ enum TaskType: String {
 extension TaskType {
     func getImageName() -> String {
         var imageName: String
-        
-        switch (self) {
+
+        switch self {
             case .home: imageName = "house.fill"
             case .business: imageName = "briefcase.fill"
             case .study: imageName = "graduationcap.fill"
@@ -28,14 +28,14 @@ extension TaskType {
             case .shopping: imageName = "cart.fill"
             case .travel: imageName = "airplane"
         }
-        
+
         return imageName
     }
-    
+
     func getName() -> String {
         var imageName: String
-        
-        switch (self) {
+
+        switch self {
             case .home: imageName = "HOME"
             case .business: imageName = "BUSINESS"
             case .study: imageName = "STUDY"
@@ -43,7 +43,7 @@ extension TaskType {
             case .shopping: imageName = "SHOPPING"
             case .travel: imageName = "TRAVEL"
         }
-        
+
         return imageName
     }
 }
@@ -51,8 +51,8 @@ extension TaskType {
 extension String {
     func getTaskTypeByName() -> TaskType? {
         var taskType: TaskType?
-        
-        switch (self) {
+
+        switch self {
             case "HOME": taskType = .home
             case "BUSINESS": taskType = .business
             case "STUDY": taskType = .study
@@ -61,7 +61,7 @@ extension String {
             case "TRAVEL": taskType = .travel
             default: taskType = nil
         }
-        
+
         return taskType
     }
 }

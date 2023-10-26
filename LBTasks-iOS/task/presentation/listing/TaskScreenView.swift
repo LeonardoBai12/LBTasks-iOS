@@ -11,12 +11,12 @@ struct TaskScreenView: View {
     @ObservedObject var viewModel: TaskViewModel
     @ObservedObject var taskDetailsViewModel: TaskDetailsViewModel
     @State private var searchFilter = ""
-    
+
     private let logout: () -> Void
-    
+
     @State var showSheet = false
-    @State private var taskToEdit: TaskData? = nil
-    
+    @State private var taskToEdit: TaskData?
+
     var filteredTasks: [TaskData] {
         if searchFilter.isEmpty {
             return viewModel.state.tasks
@@ -28,7 +28,7 @@ struct TaskScreenView: View {
             }
         }
     }
-    
+
     init(
         viewModel: TaskViewModel,
         taskDetailsViewModel: TaskDetailsViewModel,
@@ -37,15 +37,15 @@ struct TaskScreenView: View {
     ) {
         self.viewModel = viewModel
         self.taskDetailsViewModel = taskDetailsViewModel
-        
+
         viewModel.userData = userData
         self.logout = logout
-        
+
         if userData != nil {
             viewModel.getTasks(userData: userData!)
         }
     }
-    
+
     var body: some View {
         TabView {
             NavigationStack {
@@ -55,7 +55,7 @@ struct TaskScreenView: View {
                             ForEach(filteredTasks) { task in
                                 TaskRowView(
                                     task: task,
-                                    user:  viewModel.userData!,
+                                    user: viewModel.userData!,
                                     onEditAction: {
                                         taskDetailsViewModel.state.errorMessage = ""
                                         taskDetailsViewModel.state.isTaskSaveSuccesful = false
@@ -97,7 +97,7 @@ struct TaskScreenView: View {
                                 viewModel: taskDetailsViewModel,
                                 task: taskToEdit,
                                 user: viewModel.userData!,
-                                onDone: { task in
+                                onDone: { _ in
                                     showSheet.toggle()
                                     viewModel.getTasks(userData: viewModel.userData!)
                                 }
@@ -111,7 +111,7 @@ struct TaskScreenView: View {
                 Image(systemName: "note.text")
                 Text("Tasks")
             }
-            
+
             UserDetailsScreen(user: viewModel.userData ?? UserData(), logout: logout)
                 .tabItem {
                     Image(systemName: "person.fill")
@@ -122,7 +122,7 @@ struct TaskScreenView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
-    
+
     private func onDelete(task: TaskData) {
         viewModel.onRequestDelete(task: task)
     }
@@ -132,10 +132,10 @@ struct TaskRowView: View {
     let task: TaskData
     let user: UserData
     let onEditAction: () -> Void
-    
+
     @State private var showDescription = false
     @State private var icon = "chevron.right"
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -149,19 +149,19 @@ struct TaskRowView: View {
                             .background(.tint)
                             .cornerRadius(8)
                             .padding(.vertical, 2)
-                        
+
                         VStack(alignment: .leading) {
                             Text(task.title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .tint(.primary)
                                 .bold()
-                            
+
                             HStack {
                                 if !(task.deadlineDate ?? "").isEmpty {
                                     Text(task.deadlineDate!.replacingOccurrences(of: "-", with: "/"))
                                         .tint(.primary)
                                 }
-                                                                
+
                                 if !(task.deadlineTime ?? "").isEmpty {
                                     Text(task.deadlineTime!)
                                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -171,14 +171,14 @@ struct TaskRowView: View {
                         }.padding(.leading, 5)
                     }
                 }
-                
+
                 if !(task.description ?? "").isEmpty {
                     Image(systemName: icon)
                         .frame(width: 20)
                         .onTapGesture {
                             if !(task.description ?? "").isEmpty {
                                 showDescription.toggle()
-                                
+
                                 withAnimation(.smooth) {
                                     if !showDescription {
                                         icon = "chevron.right"
@@ -190,7 +190,7 @@ struct TaskRowView: View {
                         }
                 }
             }
-            
+
             if showDescription {
                 Text(task.description ?? "")
                     .font(.caption)

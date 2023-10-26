@@ -14,11 +14,11 @@ import Combine
 class SignInViewModel: ObservableObject {
     @Published var state = SignInState()
     private let useCases: SignInUseCases
-    
+
     init(useCases: SignInUseCases) {
         self.useCases = useCases
     }
-    
+
     func signInWithEmailAndPassword(email: String, password: String, repeatedPassword: String) {
         useCases.signInWithEmailPasswordUseCase.invoke(
             email: email,
@@ -28,7 +28,7 @@ class SignInViewModel: ObservableObject {
             self.onSignInResult(result)
         }
     }
-    
+
     func loginWithEmailAndPassword(email: String, password: String) {
         useCases.loginWithEmailPasswordUseCase.invoke(
             email: email,
@@ -37,19 +37,19 @@ class SignInViewModel: ObservableObject {
             self.onSignInResult(result)
         }
     }
-    
+
     func getSignedInUser() -> UserData? {
         return useCases.getSignedInUserUseCase.invoke()
     }
-    
+
     func logout() {
         useCases.logoutUseCase.invoke()
     }
-    
+
     func resetState() {
         state = SignInState()
     }
-    
+
     private func onSignInResult(_ result: SignInResult) {
         state.isSignInSuccessful = result.data != nil
         state.signInError = result.errorMessage

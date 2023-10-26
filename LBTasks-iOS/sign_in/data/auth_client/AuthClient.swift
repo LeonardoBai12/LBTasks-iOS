@@ -10,7 +10,7 @@ import AuthenticationServices
 
 class AuthClient {
     private let auth = Auth.auth()
-    
+
     func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
         auth.signIn(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -27,7 +27,7 @@ class AuthClient {
             }
         }
     }
-    
+
     func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
         auth.createUser(withEmail: email, password: password) { authResult, error in
             if let error = error {
@@ -44,7 +44,7 @@ class AuthClient {
             }
         }
     }
-    
+
     func getSignedInUser() -> UserData? {
         if let user = auth.currentUser {
             return UserData(
@@ -56,12 +56,12 @@ class AuthClient {
         }
         return nil
     }
-    
+
     func logout() {
         do {
             try auth.signOut()
         } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+            print("Error signing out: %@", signOutError)
         }
     }
 }

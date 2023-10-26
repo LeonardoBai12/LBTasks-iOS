@@ -10,15 +10,15 @@ import Combine
 
 class TaskRepositoryImpl: TaskRepository {
     private let realtimeDatabaseClient: RealtimeDatabaseClient
-    
+
     init(realtimeDatabaseClient: RealtimeDatabaseClient) {
         self.realtimeDatabaseClient = realtimeDatabaseClient
     }
-    
+
     func deleteTask(userData: UserData, task: TaskData) {
         realtimeDatabaseClient.deleteTask(user: userData, task: task)
     }
-    
+
     func getTasks(userData: UserData) -> AnyPublisher<[TaskData], Error> {
         return Future<[TaskData], Error> { promise in
             self.realtimeDatabaseClient.getTasksFromUser(user: userData) { tasks in
@@ -26,7 +26,7 @@ class TaskRepositoryImpl: TaskRepository {
             }
         }.eraseToAnyPublisher()
     }
-    
+
     func insertTask(userData: UserData, task: TaskData) {
         realtimeDatabaseClient.insertTask(user: userData, task: task)
     }

@@ -11,7 +11,7 @@ class TaskDependencies {
     private let realtimeDatabaseClient = RealtimeDatabaseClient()
     let taskRepository: TaskRepository
     let taskUseCases: TaskUseCases
-    
+
     init() {
         taskRepository = TaskRepositoryImpl(realtimeDatabaseClient: realtimeDatabaseClient)
         taskUseCases = TaskUseCases(
@@ -21,11 +21,11 @@ class TaskDependencies {
             updateTaskUseCase: UpdateTaskUseCase(repository: taskRepository)
         )
     }
-    
+
     func makeTaskViewModel() -> TaskViewModel {
         return TaskViewModel(useCases: taskUseCases)
     }
-    
+
     func makeTaskDetailsViewModel() -> TaskDetailsViewModel {
         return TaskDetailsViewModel(useCases: taskUseCases)
     }
