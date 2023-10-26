@@ -50,13 +50,13 @@
 		8641D51E2AE37AD700F89E89 /* TaskDetailsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */; };
 		86642BB12AE615BF00CF0598 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86642BB02AE615BF00CF0598 /* DateExtensions.swift */; };
 		8666F91F2AE4040200A4FD80 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */; };
-		8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */; };
+		8671751D2ADC826000A769C7 /* LBTasksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671751C2ADC826000A769C7 /* LBTasksApp.swift */; };
 		867175212ADC826100A769C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175202ADC826100A769C7 /* Assets.xcassets */; };
 		867175242ADC826100A769C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 867175232ADC826100A769C7 /* Preview Assets.xcassets */; };
-		867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 867175272ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld */; };
-		867175332ADC826100A769C7 /* LBTasks_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */; };
-		8671753D2ADC826100A769C7 /* LBTasks_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */; };
-		8671753F2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */; };
+		867175292ADC826100A769C7 /* LBTasksiOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 867175272ADC826100A769C7 /* LBTasksiOS.xcdatamodeld */; };
+		867175332ADC826100A769C7 /* LBTasksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867175322ADC826100A769C7 /* LBTasksTests.swift */; };
+		8671753D2ADC826100A769C7 /* LBTasksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753C2ADC826100A769C7 /* LBTasksUITests.swift */; };
+		8671753F2ADC826100A769C7 /* LBTasksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8671753E2ADC826100A769C7 /* LBTasksUITestsLaunchTests.swift */; };
 		86BA61DF2AE47D0100C10184 /* UserDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BA61DE2AE47D0100C10184 /* UserDetailsScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -113,16 +113,16 @@
 		8641D51D2AE37AD700F89E89 /* TaskDetailsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsState.swift; sourceTree = "<group>"; };
 		86642BB02AE615BF00CF0598 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		8666F91E2AE4040200A4FD80 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
-		867175192ADC826000A769C7 /* LBTasks-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LBTasks-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSApp.swift; sourceTree = "<group>"; };
+		867175192ADC826000A769C7 /* LBTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8671751C2ADC826000A769C7 /* LBTasksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasksApp.swift; sourceTree = "<group>"; };
 		867175202ADC826100A769C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		867175232ADC826100A769C7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		867175282ADC826100A769C7 /* LBTasks_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LBTasks_iOS.xcdatamodel; sourceTree = "<group>"; };
-		8671752E2ADC826100A769C7 /* LBTasks-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBTasks-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSTests.swift; sourceTree = "<group>"; };
-		867175382ADC826100A769C7 /* LBTasks-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "LBTasks-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSUITests.swift; sourceTree = "<group>"; };
-		8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasks_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8671752E2ADC826100A769C7 /* LBTasksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBTasksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		867175322ADC826100A769C7 /* LBTasksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasksTests.swift; sourceTree = "<group>"; };
+		867175382ADC826100A769C7 /* LBTasksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBTasksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8671753C2ADC826100A769C7 /* LBTasksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasksUITests.swift; sourceTree = "<group>"; };
+		8671753E2ADC826100A769C7 /* LBTasksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBTasksUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		86BA61DE2AE47D0100C10184 /* UserDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -306,8 +306,8 @@
 			isa = PBXGroup;
 			children = (
 				8671751B2ADC826000A769C7 /* LBTasks-iOS */,
-				867175312ADC826100A769C7 /* LBTasks-iOSTests */,
-				8671753B2ADC826100A769C7 /* LBTasks-iOSUITests */,
+				867175312ADC826100A769C7 /* LBTasksTests */,
+				8671753B2ADC826100A769C7 /* LBTasksUITests */,
 				8671751A2ADC826000A769C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -315,9 +315,9 @@
 		8671751A2ADC826000A769C7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				867175192ADC826000A769C7 /* LBTasks-iOS.app */,
-				8671752E2ADC826100A769C7 /* LBTasks-iOSTests.xctest */,
-				867175382ADC826100A769C7 /* LBTasks-iOSUITests.xctest */,
+				867175192ADC826000A769C7 /* LBTasks.app */,
+				8671752E2ADC826100A769C7 /* LBTasksTests.xctest */,
+				867175382ADC826100A769C7 /* LBTasksUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -329,9 +329,9 @@
 				86F037BD2ADCA80B000B69FE /* sign_in */,
 				86F037BC2ADCA7F7000B69FE /* task */,
 				86F037BB2ADCA7EC000B69FE /* core */,
-				8671751C2ADC826000A769C7 /* LBTasks_iOSApp.swift */,
+				8671751C2ADC826000A769C7 /* LBTasksApp.swift */,
 				867175202ADC826100A769C7 /* Assets.xcassets */,
-				867175272ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld */,
+				867175272ADC826100A769C7 /* LBTasksiOS.xcdatamodeld */,
 				867175222ADC826100A769C7 /* Preview Content */,
 			);
 			path = "LBTasks-iOS";
@@ -345,21 +345,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		867175312ADC826100A769C7 /* LBTasks-iOSTests */ = {
+		867175312ADC826100A769C7 /* LBTasksTests */ = {
 			isa = PBXGroup;
 			children = (
-				867175322ADC826100A769C7 /* LBTasks_iOSTests.swift */,
+				867175322ADC826100A769C7 /* LBTasksTests.swift */,
 			);
-			path = "LBTasks-iOSTests";
+			path = LBTasksTests;
 			sourceTree = "<group>";
 		};
-		8671753B2ADC826100A769C7 /* LBTasks-iOSUITests */ = {
+		8671753B2ADC826100A769C7 /* LBTasksUITests */ = {
 			isa = PBXGroup;
 			children = (
-				8671753C2ADC826100A769C7 /* LBTasks_iOSUITests.swift */,
-				8671753E2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift */,
+				8671753C2ADC826100A769C7 /* LBTasksUITests.swift */,
+				8671753E2ADC826100A769C7 /* LBTasksUITestsLaunchTests.swift */,
 			);
-			path = "LBTasks-iOSUITests";
+			path = LBTasksUITests;
 			sourceTree = "<group>";
 		};
 		86F037BB2ADCA7EC000B69FE /* core */ = {
@@ -454,9 +454,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		867175182ADC826000A769C7 /* LBTasks-iOS */ = {
+		867175182ADC826000A769C7 /* LBTasks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 867175422ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOS" */;
+			buildConfigurationList = 867175422ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks" */;
 			buildPhases = (
 				867175152ADC826000A769C7 /* Sources */,
 				867175162ADC826000A769C7 /* Frameworks */,
@@ -466,7 +466,7 @@
 			);
 			dependencies = (
 			);
-			name = "LBTasks-iOS";
+			name = LBTasks;
 			packageProductDependencies = (
 				8641D4BD2AE1E09500F89E89 /* FirebaseAnalytics */,
 				8641D4BF2AE1E09500F89E89 /* FirebaseAnalyticsOnDeviceConversion */,
@@ -478,12 +478,12 @@
 				8641D4DA2AE1F59D00F89E89 /* FirebaseDatabaseSwift */,
 			);
 			productName = "LBTasks-iOS";
-			productReference = 867175192ADC826000A769C7 /* LBTasks-iOS.app */;
+			productReference = 867175192ADC826000A769C7 /* LBTasks.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8671752D2ADC826100A769C7 /* LBTasks-iOSTests */ = {
+		8671752D2ADC826100A769C7 /* LBTasksTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 867175452ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOSTests" */;
+			buildConfigurationList = 867175452ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasksTests" */;
 			buildPhases = (
 				8671752A2ADC826100A769C7 /* Sources */,
 				8671752B2ADC826100A769C7 /* Frameworks */,
@@ -494,14 +494,14 @@
 			dependencies = (
 				867175302ADC826100A769C7 /* PBXTargetDependency */,
 			);
-			name = "LBTasks-iOSTests";
+			name = LBTasksTests;
 			productName = "LBTasks-iOSTests";
-			productReference = 8671752E2ADC826100A769C7 /* LBTasks-iOSTests.xctest */;
+			productReference = 8671752E2ADC826100A769C7 /* LBTasksTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		867175372ADC826100A769C7 /* LBTasks-iOSUITests */ = {
+		867175372ADC826100A769C7 /* LBTasksUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 867175482ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOSUITests" */;
+			buildConfigurationList = 867175482ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasksUITests" */;
 			buildPhases = (
 				867175342ADC826100A769C7 /* Sources */,
 				867175352ADC826100A769C7 /* Frameworks */,
@@ -512,9 +512,9 @@
 			dependencies = (
 				8671753A2ADC826100A769C7 /* PBXTargetDependency */,
 			);
-			name = "LBTasks-iOSUITests";
+			name = LBTasksUITests;
 			productName = "LBTasks-iOSUITests";
-			productReference = 867175382ADC826100A769C7 /* LBTasks-iOSUITests.xctest */;
+			productReference = 867175382ADC826100A769C7 /* LBTasksUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -556,9 +556,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				867175182ADC826000A769C7 /* LBTasks-iOS */,
-				8671752D2ADC826100A769C7 /* LBTasks-iOSTests */,
-				867175372ADC826100A769C7 /* LBTasks-iOSUITests */,
+				867175182ADC826000A769C7 /* LBTasks */,
+				8671752D2ADC826100A769C7 /* LBTasksTests */,
+				867175372ADC826100A769C7 /* LBTasksUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -605,7 +605,7 @@
 				8641D4E32AE1F8DA00F89E89 /* LoginWIthEmailAndPasswordUseCase.swift in Sources */,
 				8641D4FA2AE2169000F89E89 /* RealtimeDatabaseClient.swift in Sources */,
 				86642BB12AE615BF00CF0598 /* DateExtensions.swift in Sources */,
-				867175292ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld in Sources */,
+				867175292ADC826100A769C7 /* LBTasksiOS.xcdatamodeld in Sources */,
 				8641D5102AE219CF00F89E89 /* TaskScreenView.swift in Sources */,
 				8641D4E52AE1F90400F89E89 /* LogoutUseCase.swift in Sources */,
 				8641D4ED2AE1F9B600F89E89 /* SignInViewModel.swift in Sources */,
@@ -614,7 +614,7 @@
 				8641D5042AE2171B00F89E89 /* DeleteTaskUseCase.swift in Sources */,
 				8641D4E12AE1F8AF00F89E89 /* GetSignedInUserUseCase.swift in Sources */,
 				8641D51E2AE37AD700F89E89 /* TaskDetailsState.swift in Sources */,
-				8671751D2ADC826000A769C7 /* LBTasks_iOSApp.swift in Sources */,
+				8671751D2ADC826000A769C7 /* LBTasksApp.swift in Sources */,
 				8641D5182AE34B9F00F89E89 /* TaskViewModel.swift in Sources */,
 				86BA61DF2AE47D0100C10184 /* UserDetailsScreen.swift in Sources */,
 				8641D50A2AE2174D00F89E89 /* TaskUseCases.swift in Sources */,
@@ -639,7 +639,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				867175332ADC826100A769C7 /* LBTasks_iOSTests.swift in Sources */,
+				867175332ADC826100A769C7 /* LBTasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,8 +647,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8671753D2ADC826100A769C7 /* LBTasks_iOSUITests.swift in Sources */,
-				8671753F2ADC826100A769C7 /* LBTasks_iOSUITestsLaunchTests.swift in Sources */,
+				8671753D2ADC826100A769C7 /* LBTasksUITests.swift in Sources */,
+				8671753F2ADC826100A769C7 /* LBTasksUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,12 +657,12 @@
 /* Begin PBXTargetDependency section */
 		867175302ADC826100A769C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 867175182ADC826000A769C7 /* LBTasks-iOS */;
+			target = 867175182ADC826000A769C7 /* LBTasks */;
 			targetProxy = 8671752F2ADC826100A769C7 /* PBXContainerItemProxy */;
 		};
 		8671753A2ADC826100A769C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 867175182ADC826000A769C7 /* LBTasks-iOS */;
+			target = 867175182ADC826000A769C7 /* LBTasks */;
 			targetProxy = 867175392ADC826100A769C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -808,7 +808,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -837,7 +837,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -856,7 +856,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasksTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -876,7 +876,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasksTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -894,7 +894,7 @@
 				DEVELOPMENT_TEAM = 5RTQFT75T2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOSUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasksUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -912,7 +912,7 @@
 				DEVELOPMENT_TEAM = 5RTQFT75T2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.lb.LBTasks-iOSUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.lb.LBTasksUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -933,7 +933,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		867175422ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOS" */ = {
+		867175422ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				867175432ADC826100A769C7 /* Debug */,
@@ -942,7 +942,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		867175452ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOSTests" */ = {
+		867175452ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasksTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				867175462ADC826100A769C7 /* Debug */,
@@ -951,7 +951,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		867175482ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasks-iOSUITests" */ = {
+		867175482ADC826100A769C7 /* Build configuration list for PBXNativeTarget "LBTasksUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				867175492ADC826100A769C7 /* Debug */,
@@ -1017,13 +1017,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		867175272ADC826100A769C7 /* LBTasks_iOS.xcdatamodeld */ = {
+		867175272ADC826100A769C7 /* LBTasksiOS.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				867175282ADC826100A769C7 /* LBTasks_iOS.xcdatamodel */,
 			);
 			currentVersion = 867175282ADC826100A769C7 /* LBTasks_iOS.xcdatamodel */;
-			path = LBTasks_iOS.xcdatamodeld;
+			path = LBTasksiOS.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
