@@ -1,7 +1,7 @@
 import XCTest
 @testable import LBTasks_iOS
 
-final class LBTasks_iOSTests: XCTestCase {
+final class LBTasksiOSTests: XCTestCase {
     func testExample() throws {
         // XCTest Documentation
         // https://developer.apple.com/documentation/xctest
