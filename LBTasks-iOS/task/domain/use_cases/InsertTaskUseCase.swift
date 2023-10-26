@@ -9,11 +9,11 @@ import Foundation
 
 class InsertTaskUseCase {
     private let repository: TaskRepository
-    
+
     init(repository: TaskRepository) {
         self.repository = repository
     }
-    
+
     func invoke(
         userData: UserData,
         title: String,
@@ -23,13 +23,21 @@ class InsertTaskUseCase {
         deadlineTime: String
     ) throws {
         if title.isEmpty {
-            throw NSError(domain: "lb.io", code: 1, userInfo: [NSLocalizedDescriptionKey: "You can't save without a title"])
+            throw NSError(
+                domain: "lb.io",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "You can't save without a title"]
+            )
         }
-        
+
         if taskType.isEmpty {
-            throw NSError(domain: "lb.io", code: 1, userInfo: [NSLocalizedDescriptionKey: "You can't save without a task type"])
+            throw NSError(
+                domain: "lb.io",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "You can't save without a task type"]
+            )
         }
-        
+
         repository.insertTask(
             userData: userData,
             task: TaskData(

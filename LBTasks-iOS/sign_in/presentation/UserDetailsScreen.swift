@@ -10,9 +10,9 @@ import SwiftUI
 struct UserDetailsScreen: View {
     private let user: UserData
     private let logout: () -> Void
-    
+
     @State var goToSignIn = false
-    
+
     init(
         user: UserData,
         logout: @escaping () -> Void
@@ -20,7 +20,7 @@ struct UserDetailsScreen: View {
         self.user = user
         self.logout = logout
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -34,7 +34,7 @@ struct UserDetailsScreen: View {
                         .padding()
                 } else {
                     AsyncImage(
-                        url: URL(string:user.profilePictureUrl ?? ""),
+                        url: URL(string: user.profilePictureUrl ?? ""),
                         content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -46,13 +46,13 @@ struct UserDetailsScreen: View {
                         }
                     ).padding()
                 }
-                
+
                 Text(user.userName ?? "")
                     .font(.largeTitle)
                     .bold()
                 Text(user.email ?? "")
                     .font(.headline)
-                
+
                 Spacer()
             }
             .toolbar {
@@ -72,7 +72,7 @@ struct UserDetailsScreen: View {
                 isPresented: $goToSignIn
             ) {
                 let taskDependencies = TaskDependencies()
-                
+
                 SignInScreenView(
                     viewModel: SignInDependencies().makeSignInViewModel(),
                     taskViewModel: taskDependencies.makeTaskViewModel(),
@@ -88,7 +88,7 @@ struct UserDetailsScreen: View {
             userId: "",
             userName: "Example User",
             email: "example@email.com",
-            profilePictureUrl: "https://media.licdn.com/dms/image/D4D03AQEXw6y6n1FgSg/profile-displayphoto-shrink_800_800/0/1690511334676?e=1703116800&v=beta&t=cd9QTBdEEfFmeU5vmNbGn2mHrK3k9H4rwBkWilxZfKU"
+            profilePictureUrl: ""
         ),
         logout: { }
     )

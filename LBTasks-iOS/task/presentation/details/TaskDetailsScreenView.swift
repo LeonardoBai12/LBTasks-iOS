@@ -9,25 +9,25 @@ import SwiftUI
 
 struct TaskDetailsScreenView: View {
     private var task: TaskData?
-    
+
     @ObservedObject var viewModel: TaskDetailsViewModel
     @State private var editedTitle: String
     @State private var editedDescription: String
     @State private var editedDate: String
     @State private var editedTime: String
-    
+
     @State private var hasDeadlineDate: Bool
     @State private var hasDeadlineTime: Bool
-    
-    @State private var selectedTaskType: TaskType? = nil
-    
+
+    @State private var selectedTaskType: TaskType?
+
     @State private var showAlert = false
     @State private var errorMessage = "Unknown error"
-        
+
     private var isEdit = false
     private var navigationTitle = "New task"
     private let onDone: (TaskData?) -> Void
-    
+
     private var user: UserData
     private var taskData: TaskData?
 
@@ -39,16 +39,18 @@ struct TaskDetailsScreenView: View {
     ) {
         editedTitle = task?.title ?? ""
         editedDescription = task?.description ?? ""
-        
-        editedDate = !(task?.deadlineDate ?? "").isEmpty ? task!.deadlineDate!.replacingOccurrences(of: "-", with: "/") : Date().asDateString()
+
+        editedDate = !(task?.deadlineDate ?? "").isEmpty
+        ? task!.deadlineDate!.replacingOccurrences(of: "-", with: "/")
+        : Date().asDateString()
         editedTime = !(task?.deadlineTime ?? "").isEmpty ? task!.deadlineTime! : Date().asTimeString()
-        
+
         isEdit = task != nil
-        
+
         if isEdit {
             navigationTitle = task!.title
         }
-        
+
         self.onDone = onDone
         self.viewModel = viewModel
         self.user = user
@@ -56,7 +58,7 @@ struct TaskDetailsScreenView: View {
         self.hasDeadlineDate = !(task?.deadlineDate ?? "").isEmpty
         self.hasDeadlineTime = !(task?.deadlineTime ?? "").isEmpty
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -65,7 +67,7 @@ struct TaskDetailsScreenView: View {
                         VStack {
                             Text("Select a task type")
                                 .padding(.bottom)
-                            
+
                             HStack {
                                 Spacer()
                                 TaskTypeImage(taskType: .business, selectedTaskType: $selectedTaskType)
@@ -75,7 +77,7 @@ struct TaskDetailsScreenView: View {
                                 TaskTypeImage(taskType: .home, selectedTaskType: $selectedTaskType)
                                 Spacer()
                             }.padding(.bottom, 20)
-                            
+
                             HStack {
                                 Spacer()
                                 TaskTypeImage(taskType: .shopping, selectedTaskType: $selectedTaskType)
@@ -88,7 +90,7 @@ struct TaskDetailsScreenView: View {
                         }
                     }
                 }
-                
+
                 Section {
                     TextField("Title", text: $editedTitle)
                         .submitLabel(.done)
@@ -103,7 +105,7 @@ struct TaskDetailsScreenView: View {
                                 .padding(.top, 10)
                                 .padding(.leading, 2)
                         }
-                        
+
                         TextEditor(text: $editedDescription)
                             .submitLabel(.done)
                             .frame(height: 100)
@@ -129,7 +131,7 @@ struct TaskDetailsScreenView: View {
                         Text("Deadline Time")
                         Toggle(isOn: $hasDeadlineTime, label: { EmptyView() })
                     }
-                    
+
                     if hasDeadlineTime {
                         CustomDatePicker(
                             label: "Select a time",
@@ -162,7 +164,7 @@ struct TaskDetailsScreenView: View {
                                     time: hasDeadlineTime ? editedTime : ""
                                 )
                             }
-                            
+
                             if viewModel.state.isTaskSaveSuccesful {
                                 onDone(taskData)
                             }
@@ -197,10 +199,9 @@ struct CustomDatePicker: View {
     var editedDate: Binding<String>
     let format: String
     let displayedComponents: DatePicker.Components
-    
+
     var body: some View {
-        
-        
+
         DatePicker(
             label,
             selection: Binding(
@@ -227,7 +228,7 @@ struct CustomDatePicker: View {
 struct TaskTypeImage: View {
     let taskType: TaskType
     var selectedTaskType: Binding<TaskType?>
-    
+
     var body: some View {
         VStack {
             ZStack {
@@ -241,13 +242,13 @@ struct TaskTypeImage: View {
                         .fill(.tint)
                         .frame(width: 50, height: 50)
                 }
-                
+
                 Image(systemName: taskType.getImageName())
                     .foregroundColor(.white)
                     .opacity(0.9)
                     .scaledToFit()
             }
-            
+
             Text(taskType.getName().capitalized)
                 .font(.callout)
         }.onTapGesture {

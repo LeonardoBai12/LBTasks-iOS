@@ -12,11 +12,11 @@ import Combine
 class TaskDetailsViewModel: ObservableObject {
     private let useCases: TaskUseCases
     @Published var state = TaskDetailsState()
-    
+
     init(useCases: TaskUseCases) {
         self.useCases = useCases
     }
-    
+
     func onRequestInsert(
         userData: UserData,
         title: String,
@@ -27,7 +27,7 @@ class TaskDetailsViewModel: ObservableObject {
     ) {
         state.errorMessage = ""
         state.isTaskSaveSuccesful = false
-        
+
         do {
             try useCases.insertTaskUseCase.invoke(
                 userData: userData,
@@ -43,7 +43,7 @@ class TaskDetailsViewModel: ObservableObject {
             state.errorMessage = errorMessage.localizedDescription
         }
     }
-    
+
     func onRequestUpdate(
         userData: UserData,
         task: TaskData,
@@ -54,7 +54,7 @@ class TaskDetailsViewModel: ObservableObject {
     ) {
         state.errorMessage = ""
         state.isTaskSaveSuccesful = false
-        
+
         do {
             try useCases.updateTaskUseCase.invoke(
                 userData: userData,
