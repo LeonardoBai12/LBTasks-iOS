@@ -6,7 +6,6 @@
 //
 
 import XCTest
-@testable import LBTasks_iOS
 
 final class LBTasksiOSTests: XCTestCase {
 
@@ -23,5 +22,4 @@ final class LBTasksiOSTests: XCTestCase {
         self.measure {
         }
     }
-
 }
