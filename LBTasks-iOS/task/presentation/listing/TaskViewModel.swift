@@ -42,10 +42,8 @@ class TaskViewModel: ObservableObject {
                 switch completion {
                 case .finished:
                     self.state.isLoading = false
-                    break
                 case .failure(let error):
                     self.state.errorMessage = error.localizedDescription
-                    break
                 }
             }, receiveValue: { [weak self] data in
                 guard let self = self else { return }

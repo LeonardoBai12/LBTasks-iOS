@@ -36,9 +36,11 @@ struct DefaultTextField: View {
                         textField
                     }
 
-                    Button(action: {
-                        isSecured.toggle()
-                    }) {
+                    Button(
+                        action: {
+                            isSecured.toggle()
+                        }
+                    ) {
                         Image(
                             systemName: self.isSecured
                             ? "eye.slash"
