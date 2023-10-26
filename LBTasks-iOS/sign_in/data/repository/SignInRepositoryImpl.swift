@@ -16,13 +16,21 @@ class SignInRepositoryImpl: SignInRepository {
         return googleAuthUiClient.getSignedInUser()
     }
 
-    func signInWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
+    func signInWithEmailAndPassword(
+        email: String,
+        password: String,
+        completion: @escaping (SignInResult) -> Void
+    ) {
         googleAuthUiClient.signInWithEmailAndPassword(email: email, password: password) { result in
             completion(result)
         }
     }
 
-    func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
+    func loginWithEmailAndPassword(
+        email: String,
+        password: String,
+        completion: @escaping (SignInResult) -> Void
+    ) {
         googleAuthUiClient.loginWithEmailAndPassword(email: email, password: password) { result in
             completion(result)
         }
