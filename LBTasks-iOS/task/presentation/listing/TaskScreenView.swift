@@ -150,7 +150,7 @@ struct TaskRowView: View {
                             .cornerRadius(8)
                             .padding(.vertical, 2)
                         
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(task.title)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .tint(.primary)
