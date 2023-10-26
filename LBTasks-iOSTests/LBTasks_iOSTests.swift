@@ -1,5 +1,5 @@
 //
-//  LBTasks_iOSTests.swift
+//  LBTasksiOSTests.swift
 //  LBTasks-iOSTests
 //
 //  Created by Leonardo Bai on 15/10/23.

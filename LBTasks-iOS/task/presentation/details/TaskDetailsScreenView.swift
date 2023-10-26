@@ -40,7 +40,9 @@ struct TaskDetailsScreenView: View {
         editedTitle = task?.title ?? ""
         editedDescription = task?.description ?? ""
 
-        editedDate = !(task?.deadlineDate ?? "").isEmpty ? task!.deadlineDate!.replacingOccurrences(of: "-", with: "/") : Date().asDateString()
+        editedDate = !(task?.deadlineDate ?? "").isEmpty
+        ? task!.deadlineDate!.replacingOccurrences(of: "-", with: "/")
+        : Date().asDateString()
         editedTime = !(task?.deadlineTime ?? "").isEmpty ? task!.deadlineTime! : Date().asTimeString()
 
         isEdit = task != nil

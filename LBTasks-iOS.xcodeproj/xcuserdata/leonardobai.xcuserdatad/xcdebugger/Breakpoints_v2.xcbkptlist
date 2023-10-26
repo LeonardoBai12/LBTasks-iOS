@@ -749,8 +749,8 @@
             filePath = "LBTasks-iOS/task/presentation/details/TaskDetailsScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "init(viewModel:task:user:onDone:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -765,8 +765,8 @@
             filePath = "LBTasks-iOS/task/presentation/details/TaskDetailsScreenView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
             landmarkName = "init(viewModel:task:user:onDone:)"
             landmarkType = "7">
          </BreakpointContent>

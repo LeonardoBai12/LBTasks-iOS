@@ -88,7 +88,7 @@ struct UserDetailsScreen: View {
             userId: "",
             userName: "Example User",
             email: "example@email.com",
-            profilePictureUrl: "https://media.licdn.com/dms/image/D4D03AQEXw6y6n1FgSg/profile-displayphoto-shrink_800_800/0/1690511334676?e=1703116800&v=beta&t=cd9QTBdEEfFmeU5vmNbGn2mHrK3k9H4rwBkWilxZfKU"
+            profilePictureUrl: ""
         ),
         logout: { }
     )
