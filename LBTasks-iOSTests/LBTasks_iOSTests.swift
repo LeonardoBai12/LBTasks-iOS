@@ -8,7 +8,7 @@
 import XCTest
 @testable import LBTasks_iOS
 
-final class LBTasks_iOSTests: XCTestCase {
+final class LBTasksiOSTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

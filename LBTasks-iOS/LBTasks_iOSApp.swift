@@ -1,5 +1,5 @@
 //
-//  LBTasks_iOSApp.swift
+//  LBTasksiOSApp.swift
 //  LBTasks-iOS
 //
 //  Created by Leonardo Bai on 15/10/23.
@@ -20,7 +20,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 
 @main
-struct LBTasks_iOSApp: App {
+struct LBTasksiOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
     var body: some Scene {
