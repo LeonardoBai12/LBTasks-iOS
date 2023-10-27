@@ -99,16 +99,7 @@ struct TaskDetailsScreenView: View {
                 }
                 Section {
                     ZStack(alignment: .topLeading) {
-                        if editedDescription.isEmpty {
-                            Text("Description")
-                                .font(.callout)
-                                .foregroundColor(.gray)
-                                .opacity(0.6)
-                                .padding(.top, 10)
-                                .padding(.bottom, 8)
-                                .padding(.leading, 2)
-                        }
-                        TextEditor(text: $editedDescription)
+                        TextField("Description", text: $editedDescription, axis: .vertical)
                             .submitLabel(.done)
                             .focused($isDescriptionFocused)
                             .onChange(of: editedDescription) { oldState, newState in
