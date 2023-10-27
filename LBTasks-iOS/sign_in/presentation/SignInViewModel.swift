@@ -8,7 +8,6 @@
 import Foundation
 
 import SwiftUI
-import FirebaseAuth
 import Combine
 
 class SignInViewModel: ObservableObject {
@@ -38,6 +37,12 @@ class SignInViewModel: ObservableObject {
         }
     }
 
+    func signInWithGoogle() {
+        useCases.signInWithGoogleUseCase.invoke { result in
+            self.onSignInResult(result)
+        }
+    }
+    
     func getSignedInUser() -> UserData? {
         return useCases.getSignedInUserUseCase.invoke()
     }

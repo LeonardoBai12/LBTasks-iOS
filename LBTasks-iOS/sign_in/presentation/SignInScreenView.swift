@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
 
 struct SignInScreenView: View {
     @ObservedObject var viewModel: SignInViewModel
@@ -49,9 +50,9 @@ struct SignInScreenView: View {
                 VStack {
                     LBTasksLogo(tint: .white, font: .largeTitle)
                         .padding(.all, 32)
-
+                    
                     Spacer()
-
+                    
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
@@ -66,7 +67,7 @@ struct SignInScreenView: View {
                                 .padding(.vertical, 8)
                         }
                     )
-
+                    
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
@@ -78,9 +79,25 @@ struct SignInScreenView: View {
                             SignInButtonView(label: "Sign in")
                                 .frame(maxWidth: .infinity)
                                 .font(.title2)
-                                .padding(.bottom, 24)
+                                .padding(.bottom, 8)
                         }
                     )
+                    
+                    Button(
+                        action: {
+                            viewModel.signInWithGoogle()
+                        },
+                        label: {
+                            SignInWithGoogleButtonView()
+                                .font(.title2)
+                        }
+                    )
+                    .frame(maxWidth: .infinity, maxHeight: 60)
+                    .background(.background)
+                    .cornerRadius(12)
+                    .padding(.horizontal)
+                    .padding(.bottom, 24)
+
                 }
             }
         }
@@ -134,6 +151,18 @@ struct SignInButtonView: View {
             .foregroundColor(.accentColor)
             .cornerRadius(12)
             .padding(.horizontal)
+    }
+}
+
+struct SignInWithGoogleButtonView: View {
+    var body: some View {
+        HStack {
+            Image("google-icon")
+                .resizable()
+                .frame(width: 40, height: 40)
+            Text("Sign in with Google")
+                .foregroundColor(.primary)
+        }
     }
 }
 

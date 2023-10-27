@@ -10,4 +10,5 @@ struct SignInUseCases {
     let signInWithEmailPasswordUseCase: SignInWithEmailPasswordUseCase
     let getSignedInUserUseCase: GetSignedInUserUseCase
     let logoutUseCase: LogoutUseCase
+    let signInWithGoogleUseCase: SignInWithGoogleUseCase
 }
