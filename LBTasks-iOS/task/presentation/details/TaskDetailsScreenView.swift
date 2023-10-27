@@ -31,6 +31,8 @@ struct TaskDetailsScreenView: View {
     private var user: UserData
     private var taskData: TaskData?
 
+    @FocusState private var isDescriptionFocused: Bool
+    
     init(
         viewModel: TaskDetailsViewModel,
         task: TaskData?,
@@ -97,18 +99,15 @@ struct TaskDetailsScreenView: View {
                 }
                 Section {
                     ZStack(alignment: .topLeading) {
-                        if editedDescription.isEmpty {
-                            Text("Description")
-                                .font(.callout)
-                                .foregroundColor(.gray)
-                                .opacity(0.6)
-                                .padding(.top, 10)
-                                .padding(.leading, 2)
-                        }
-
-                        TextEditor(text: $editedDescription)
+                        TextField("Description", text: $editedDescription, axis: .vertical)
                             .submitLabel(.done)
-                            .frame(height: 100)
+                            .focused($isDescriptionFocused)
+                            .onChange(of: editedDescription) { oldState, newState in
+                                if newState.last?.isNewline == .some(true) {
+                                    editedDescription = oldState
+                                    isDescriptionFocused.toggle()
+                                }
+                            }
                     }
                 }
                 Section {
