@@ -38,11 +38,12 @@ struct UserDetailsScreen: View {
                         content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 400, maxHeight: 250)
+                                .frame(maxWidth: 250, maxHeight: 250)
                                 .clipShape(Circle())
                         },
                         placeholder: {
                             ProgressView()
+                                .frame(maxWidth: 250, maxHeight: 250)
                         }
                     ).padding()
                 }
