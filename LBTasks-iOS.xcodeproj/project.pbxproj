@@ -130,6 +130,7 @@
 		86BCFA8A2AEB2C350070AC59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86BCFA8C2AEB31BE0070AC59 /* ApplicationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUtils.swift; sourceTree = "<group>"; };
 		86BCFA8E2AEB33A00070AC59 /* SignInWithGoogleUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithGoogleUseCase.swift; sourceTree = "<group>"; };
+		86C5DCC32AEB4BBA00722BBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +336,7 @@
 		8671751B2ADC826000A769C7 /* LBTasks-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				86C5DCC32AEB4BBA00722BBE /* Info.plist */,
 				86BCFA8A2AEB2C350070AC59 /* GoogleService-Info.plist */,
 				86F037BD2ADCA80B000B69FE /* sign_in */,
 				86F037BC2ADCA7F7000B69FE /* task */,
@@ -813,6 +815,7 @@
 				DEVELOPMENT_TEAM = 5RTQFT75T2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LBTasks-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -842,6 +845,7 @@
 				DEVELOPMENT_TEAM = 5RTQFT75T2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "LBTasks-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -27,8 +27,8 @@ struct UserDetailsScreen: View {
                 if (user.profilePictureUrl  ?? "").isEmpty {
                     Text(user.email?.first?.uppercased() ?? "")
                         .foregroundStyle(.tint)
-                        .font(.system(size: 150))
-                        .frame(maxWidth: 250, maxHeight: 250)
+                        .font(.system(size: 100))
+                        .frame(maxWidth: 200, maxHeight: 200)
                         .background(.tertiary)
                         .clipShape(Circle())
                         .padding()
@@ -38,11 +38,12 @@ struct UserDetailsScreen: View {
                         content: { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: 400, maxHeight: 250)
+                                .frame(maxWidth: 200, maxHeight: 200)
                                 .clipShape(Circle())
                         },
                         placeholder: {
                             ProgressView()
+                                .frame(maxWidth: 200, maxHeight: 200)
                         }
                     ).padding()
                 }
