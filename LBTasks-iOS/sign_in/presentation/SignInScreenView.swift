@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleSignInSwift
 
 struct SignInScreenView: View {
     @ObservedObject var viewModel: SignInViewModel
@@ -49,15 +50,16 @@ struct SignInScreenView: View {
                 VStack {
                     LBTasksLogo(tint: .white, font: .largeTitle)
                         .padding(.all, 32)
-
+                    
                     Spacer()
-
+                    
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
                             taskViewModel: taskViewModel,
                             taskDetailsViewModel: taskDetailsViewModel,
-                            isLogin: true
+                            isLogin: true,
+                            isGoogleSignIn: false
                         ),
                         label: {
                             LoginButtonView(label: "Login")
@@ -66,22 +68,50 @@ struct SignInScreenView: View {
                                 .padding(.vertical, 8)
                         }
                     )
-
+                    
                     NavigationLink(
                         destination: SignInLoginView(
                             viewModel: viewModel,
                             taskViewModel: taskViewModel,
                             taskDetailsViewModel: taskDetailsViewModel,
-                            isLogin: false
+                            isLogin: false,
+                            isGoogleSignIn: false
                         ),
                         label: {
                             SignInButtonView(label: "Sign in")
                                 .frame(maxWidth: .infinity)
                                 .font(.title2)
+                                .padding(.bottom, 8)
+                        }
+                    )
+                    
+                    Text("or")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                    
+                    NavigationLink(
+                        destination: SignInLoginView(
+                            viewModel: viewModel,
+                            taskViewModel: taskViewModel,
+                            taskDetailsViewModel: taskDetailsViewModel,
+                            isLogin: false,
+                            isGoogleSignIn: true
+                        ),
+                        label: {
+                            SignInWithGoogleButtonView()
+                                .font(.title2)
+                                .frame(maxWidth: .infinity, maxHeight: 60)
+                                .background(.background)
+                                .cornerRadius(12)
+                                .padding(.horizontal)
                                 .padding(.bottom, 24)
                         }
                     )
                 }
+            }        
+            .onAppear {
+                viewModel.state.signInError = ""
+                viewModel.state.isSignInSuccessful = false
             }
         }
     }
@@ -137,12 +167,27 @@ struct SignInButtonView: View {
     }
 }
 
+struct SignInWithGoogleButtonView: View {
+    var body: some View {
+        HStack {
+            Image("google-icon")
+                .resizable()
+                .frame(width: 40, height: 40)
+            Text("Sign in with Google")
+                .foregroundColor(.primary)
+        }
+    }
+}
+
 struct SignInLoginView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var viewModel: SignInViewModel
     var taskViewModel: TaskViewModel
     var taskDetailsViewModel: TaskDetailsViewModel
 
     let isLogin: Bool
+    let isGoogleSignIn: Bool
 
     @State private var email = ""
     @State private var password = ""
@@ -154,63 +199,69 @@ struct SignInLoginView: View {
     @State private var isNavigationActive = false
 
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section {
-                        LBTasksLogo(tint: .primary, font: .title)
-                            .padding(.all, 4)
-                    }
-
-                    Section {
-                        DefaultTextField(
-                            placeholder: "Email",
-                            value: $email,
-                            imageName: "envelope.fill"
-                        )
-                    }
-
-                    Section {
-                        DefaultTextField(
-                            placeholder: "Password",
-                            value: $password,
-                            imageName: "lock.fill",
-                            isPassword: true
-                        )
-                    }
-
-                    if !isLogin {
+        let screen = NavigationView {
+            if !isGoogleSignIn {
+                VStack {
+                    Form {
+                        Section {
+                            LBTasksLogo(tint: .primary, font: .title)
+                                .padding(.all, 4)
+                        }
+                        
                         Section {
                             DefaultTextField(
-                                placeholder: "Repeat password",
-                                value: $repeatedPassword,
+                                placeholder: "Email",
+                                value: $email,
+                                imageName: "envelope.fill"
+                            )
+                        }
+                        
+                        Section {
+                            DefaultTextField(
+                                placeholder: "Password",
+                                value: $password,
                                 imageName: "lock.fill",
                                 isPassword: true
                             )
                         }
+                        
+                        if !isLogin {
+                            Section {
+                                DefaultTextField(
+                                    placeholder: "Repeat password",
+                                    value: $repeatedPassword,
+                                    imageName: "lock.fill",
+                                    isPassword: true
+                                )
+                            }
+                        }
                     }
+                    
+                    Spacer()
                 }
-
-                Spacer()
+            } else {
+                EmptyView()
             }
         }
         .toolbar {
-            ToolbarItem {
-                Button {
-                    if !isLogin {
-                        viewModel.signInWithEmailAndPassword(
-                            email: email,
-                            password: password,
-                            repeatedPassword: repeatedPassword
-                        )
-                    } else {
-                        viewModel.loginWithEmailAndPassword(
-                            email: email,
-                            password: password
-                        )
+            if !isGoogleSignIn {
+                ToolbarItem {
+                    Button {
+                        if !isLogin {
+                            viewModel.signInWithEmailAndPassword(
+                                email: email,
+                                password: password,
+                                repeatedPassword: repeatedPassword
+                            )
+                        } else {
+                            viewModel.loginWithEmailAndPassword(
+                                email: email,
+                                password: password
+                            )
+                        }
+                    } label: {
+                        Text("Done")
                     }
-                } label: {
-                    Text("Done")
                 }
             }
         }
@@ -219,6 +270,10 @@ struct SignInLoginView: View {
             showAlert = false
             viewModel.state.signInError = ""
             viewModel.state.isSignInSuccessful = false
+            
+            if isGoogleSignIn {
+                viewModel.signInWithGoogle()
+            }
         }
         .alert(isPresented: $showAlert) {
             Alert(
@@ -231,8 +286,12 @@ struct SignInLoginView: View {
                 isNavigationActive = true
             } else if let signInError = state.signInError {
                 if !signInError.isEmpty {
-                    errorMessage = signInError
-                    showAlert = true
+                    if isGoogleSignIn {
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        errorMessage = signInError
+                        showAlert = true
+                    }
                 }
             }
         }
@@ -247,6 +306,12 @@ struct SignInLoginView: View {
                     viewModel.logout()
                 }
             )
+        }
+        
+        if isGoogleSignIn {
+            screen.navigationBarBackButtonHidden()
+        } else {
+            screen
         }
     }
 }

@@ -6,14 +6,14 @@
 //
 
 class SignInRepositoryImpl: SignInRepository {
-    private let googleAuthUiClient: AuthClient
+    private let authClient: AuthClient
 
-    init(googleAuthUiClient: AuthClient) {
-        self.googleAuthUiClient = googleAuthUiClient
+    init(authClient: AuthClient) {
+        self.authClient = authClient
     }
 
     func getSignedInUser() -> UserData? {
-        return googleAuthUiClient.getSignedInUser()
+        return authClient.getSignedInUser()
     }
 
     func signInWithEmailAndPassword(
@@ -21,7 +21,7 @@ class SignInRepositoryImpl: SignInRepository {
         password: String,
         completion: @escaping (SignInResult) -> Void
     ) {
-        googleAuthUiClient.signInWithEmailAndPassword(email: email, password: password) { result in
+        authClient.signInWithEmailAndPassword(email: email, password: password) { result in
             completion(result)
         }
     }
@@ -31,12 +31,18 @@ class SignInRepositoryImpl: SignInRepository {
         password: String,
         completion: @escaping (SignInResult) -> Void
     ) {
-        googleAuthUiClient.loginWithEmailAndPassword(email: email, password: password) { result in
+        authClient.loginWithEmailAndPassword(email: email, password: password) { result in
+            completion(result)
+        }
+    }
+    
+    func signInWithGoogle(completion: @escaping (SignInResult) -> Void) {
+        authClient.signInWithGoogle { result in
             completion(result)
         }
     }
 
     func logout() {
-        googleAuthUiClient.logout()
+        authClient.logout()
     }
 }

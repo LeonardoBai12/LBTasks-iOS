@@ -19,5 +19,6 @@ protocol SignInRepository {
         password: String,
         completion: @escaping (SignInResult) -> Void
     )
+    func signInWithGoogle(completion: @escaping (SignInResult) -> Void)
     func logout()
 }
