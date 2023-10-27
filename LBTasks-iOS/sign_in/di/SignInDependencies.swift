@@ -13,12 +13,13 @@ class SignInDependencies {
     let signInUseCases: SignInUseCases
 
     init() {
-        signInRepository = SignInRepositoryImpl(googleAuthUiClient: googleAuthUiClient)
+        signInRepository = SignInRepositoryImpl(authClient: googleAuthUiClient)
         signInUseCases = SignInUseCases(
             loginWithEmailPasswordUseCase: LoginWithEmailPasswordUseCase(repository: signInRepository),
             signInWithEmailPasswordUseCase: SignInWithEmailPasswordUseCase(repository: signInRepository),
             getSignedInUserUseCase: GetSignedInUserUseCase(repository: signInRepository),
-            logoutUseCase: LogoutUseCase(repository: signInRepository)
+            logoutUseCase: LogoutUseCase(repository: signInRepository),
+            signInWithGoogleUseCase: SignInWithGoogleUseCase(repository: signInRepository)
         )
     }
 

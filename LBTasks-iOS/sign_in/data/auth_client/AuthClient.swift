@@ -7,9 +7,12 @@
 
 import FirebaseAuth
 import AuthenticationServices
+import GoogleSignIn
+import FirebaseCore
 
 class AuthClient {
     private let auth = Auth.auth()
+    private let googleSignIn = GIDSignIn.sharedInstance
 
     func loginWithEmailAndPassword(email: String, password: String, completion: @escaping (SignInResult) -> Void) {
         auth.signIn(withEmail: email, password: password) { authResult, error in
@@ -40,6 +43,78 @@ class AuthClient {
                     email: user.email,
                     profilePictureUrl: user.photoURL?.absoluteString
                 )
+                completion(SignInResult(data: userData, errorMessage: nil))
+            }
+        }
+    }
+    
+    func signInWithGoogle(completion: @escaping (SignInResult) -> Void) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+     
+        let config = GIDConfiguration(clientID: clientID)
+        googleSignIn.configuration = config
+        
+        googleSignIn.signIn(
+            withPresenting: ApplicationUtils.rootViewController
+        ) { user, error in
+            if let error = error {
+                completion(
+                    SignInResult(
+                        data: nil,
+                        errorMessage: error.localizedDescription
+                    )
+                )
+                return
+            }
+            
+            guard
+                let user = user?.user,
+                let idToken = user.idToken else {
+                
+                completion(
+                    SignInResult(
+                        data: nil,
+                        errorMessage: "No user token found for this account."
+                    )
+                )
+                return
+            }
+            
+            let accessToken = user.accessToken
+            
+            let credential = GoogleAuthProvider.credential(
+                withIDToken: idToken.tokenString,
+                accessToken: accessToken.tokenString
+            )
+            
+            self.auth.signIn(with: credential) { res, error in
+                if let error = error {
+                    completion(
+                        SignInResult(
+                            data: nil,
+                            errorMessage: error.localizedDescription
+                        )
+                    )
+                    return
+                }
+                
+                guard let user = res?.user else {
+                    completion(
+                        SignInResult(
+                            data: nil,
+                            errorMessage: "No user found for this account."
+                        )
+                    )
+                    return
+                }
+                
+                let userData = UserData(
+                    userId: user.uid,
+                    userName: user.displayName,
+                    email: user.email,
+                    profilePictureUrl: user.photoURL?.absoluteString
+                )
+                
                 completion(SignInResult(data: userData, errorMessage: nil))
             }
         }
