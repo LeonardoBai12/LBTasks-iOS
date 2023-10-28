@@ -23,3 +23,7 @@ To ensure high-quality code, the following tools and processes are used before m
 
 * [SwiftLint](https://github.com/realm/SwiftLint) is used to enforce code style guidelines.
 * All unit tests are run to ensure code functionality and quality.
+
+## Demonstration
+
+You can watch a demo of the application's features on this [YouTube Video](https://www.youtube.com/watch?v=J86hSoZrQVY) (PT-BR).
